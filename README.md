@@ -1,0 +1,2 @@
+# AlgorhitmSimulator-Inzynierka
+ 
