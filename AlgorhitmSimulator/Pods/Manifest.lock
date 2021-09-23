@@ -1,0 +1,16 @@
+PODS:
+  - SwiftPriorityQueue (1.3.1)
+
+DEPENDENCIES:
+  - SwiftPriorityQueue (= 1.3.1)
+
+SPEC REPOS:
+  trunk:
+    - SwiftPriorityQueue
+
+SPEC CHECKSUMS:
+  SwiftPriorityQueue: e91ce015fb887a39335c300253b98b727900bc97
+
+PODFILE CHECKSUM: f1424b342abd8a221482f7b5f693e3c76dd5bc91
+
+COCOAPODS: 1.11.0
