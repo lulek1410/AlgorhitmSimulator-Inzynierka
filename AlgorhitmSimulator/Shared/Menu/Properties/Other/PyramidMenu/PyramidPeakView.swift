@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+/// SwiftUI view in which user can set/change peak position properties of objects.
 struct PyramidPeakView: View {
+    
+    /// View model variable used to controll view and call actions when events occur in it.
     @ObservedObject var view_model : PyramidPropertiesViewModel = PyramidPropertiesViewModel()
+    
+    /// Main body of PyramidPeakView.
     var body: some View {
         VStack {
             LabeledDivider(label: "Pyramid peak", font_size: 12, horizontal_padding: 5)

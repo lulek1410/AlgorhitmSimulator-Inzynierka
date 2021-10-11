@@ -8,12 +8,19 @@
 import Foundation
 import SceneKit
 
+/// Holder of elements needed to display.
 class Content {
     
+    /// Scene on which we display 3D objects added by user.
     let scene = SCNScene()
+    
+    /// View on which we display scene with objects.
     let view = SCNView()
+    
+    /// View's events coordinator.
     var coordinator : Coordinator? = nil
     
+    /// Create and configure view.
     func createView(){
         view.scene = scene
         view.allowsCameraControl = true
@@ -21,6 +28,7 @@ class Content {
         view.showsStatistics = true
     }
     
+    /// Create camera with specific configuration and adds it to the scene.
     func addCamera(){
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()

@@ -7,7 +7,15 @@
 
 import Foundation
 
+/// Delegate sending information to preview of map
 protocol DrawPathDelegate : AnyObject {
+    
+    /// Creates path discovered by algorithm and displays it.
+    ///
+    /// - Parameters:
+    ///     - grid: *Whole grid of nodes on which the algorithm operates*
     func drawPath(grid : Grid)
+    
+    /// Deletes path from start to end point that is curently displayed in the preview.
     func clearPreviousPath()
 }

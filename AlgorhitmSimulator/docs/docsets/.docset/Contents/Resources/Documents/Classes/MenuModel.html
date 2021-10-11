@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MenuModel Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MenuModel" class="dashAnchor"></a>
+    <a title="MenuModel Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (96% documented)</p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        MenuModel Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AlgorithmPicker.html">AlgorithmPicker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlgorithmsViewModel.html">AlgorithmsViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Content.html">Content</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentViewModel.html">ContentViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Grid.html">Grid</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MenuModel.html">MenuModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MenuViewModel.html">MenuViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObstacleGenerator.html">ObstacleGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PathDrawer.html">PathDrawer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PositionViewModel.html">PositionViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pyramid.html">Pyramid</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PyramidPropertiesViewModel.html">PyramidPropertiesViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SavesManager.html">SavesManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SavesMenuViewModel.html">SavesMenuViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ShapeButtonsViewModel.html">ShapeButtonsViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SizeViewModel.html">SizeViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StartEndPropsViewModel.html">StartEndPropsViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/PeakPosition.html">PeakPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SCNGeometry.html">SCNGeometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SCNNode.html">SCNNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/DrawPathDelegate.html">DrawPathDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EditorSceneDelegate.html">EditorSceneDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MenuDelegate.html">MenuDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObstacleGeneratorDelegate.html">ObstacleGeneratorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObstaclesForAlgorithmDelegate.html">ObstaclesForAlgorithmDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SaveMenuDelegate.html">SaveMenuDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ShowHelpDelegate.html">ShowHelpDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdatePeakPositionDelegate.html">UpdatePeakPositionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdatePositionDelegate.html">UpdatePositionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdateSizeDelegate.html">UpdateSizeDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AlgorithmSimulatorApp.html">AlgorithmSimulatorApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Algorithms.html">Algorithms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AlgorithmsMenuView.html">AlgorithmsMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentModel.html">ContentModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Formatter.html">Formatter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HelpMenuView.html">HelpMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LabeledDivider.html">LabeledDivider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MenuView.html">MenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Position.html">Position</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PositionPropertiesView.html">PositionPropertiesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PriorityQueue.html">PriorityQueue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PyramidPeak.html">PyramidPeak</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PyramidPeakView.html">PyramidPeakView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveFiles.html">SaveFiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SavesMenuView.html">SavesMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SceneKitView.html">SceneKitView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SceneViewRepresentable.html">SceneViewRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShapeButton.html">ShapeButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShapeButtonsRow.html">ShapeButtonsRow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Size.html">Size</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SizePropertiesView.html">SizePropertiesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StartEndProps.html">StartEndProps</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StartEndPropsView.html">StartEndPropsView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MenuModel</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MenuModel</span></code></pre>
+
+                </div>
+              </div>
+            <p>Model holding sub view displayed in MenuView and other instances of classes needed for menu to function properly.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC28shape_buttons_row_view_modelAA016ShapeButtonsViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/shape_buttons_row_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC28shape_buttons_row_view_modelAA016ShapeButtonsViewD0Cvp">shape_buttons_row_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for ShapeButtonsView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">shape_buttons_row_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/ShapeButtonsViewModel.html">ShapeButtonsViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC30position_properties_view_modelAA012PositionViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/position_properties_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC30position_properties_view_modelAA012PositionViewD0Cvp">position_properties_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for PositionPropertiesView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">position_properties_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/PositionViewModel.html">PositionViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC15size_view_modelAA08SizeViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/size_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC15size_view_modelAA08SizeViewD0Cvp">size_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for SizePropertiesView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">size_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/SizeViewModel.html">SizeViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC18pyramid_view_modelAA021PyramidPropertiesViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/pyramid_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC18pyramid_view_modelAA021PyramidPropertiesViewD0Cvp">pyramid_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for PyramidPeakView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pyramid_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/PyramidPropertiesViewModel.html">PyramidPropertiesViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC16other_view_modelAA017StartEndPropsViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/other_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC16other_view_modelAA017StartEndPropsViewD0Cvp">other_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for OtherPropsView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">other_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/StartEndPropsViewModel.html">StartEndPropsViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC16saves_view_modelAA05Savesc4ViewD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/saves_view_model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC16saves_view_modelAA05Savesc4ViewD0Cvp">saves_view_model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model needed for SavesMenuView to function.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">saves_view_model</span><span class="p">:</span> <span class="kt"><a href="../Classes/SavesMenuViewModel.html">SavesMenuViewModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC18shape_buttons_viewAA15ShapeButtonsRowVvp"></a>
+                    <a name="//apple_ref/swift/Property/shape_buttons_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC18shape_buttons_viewAA15ShapeButtonsRowVvp">shape_buttons_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for choosing obstacle shape.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shape_buttons_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/ShapeButtonsRow.html">ShapeButtonsRow</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC24position_properties_viewAA22PositionPropertiesViewVvp"></a>
+                    <a name="//apple_ref/swift/Property/position_properties_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC24position_properties_viewAA22PositionPropertiesViewVvp">position_properties_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for choosing obstacle position.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">position_properties_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/PositionPropertiesView.html">PositionPropertiesView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC9size_viewAA18SizePropertiesViewVvp"></a>
+                    <a name="//apple_ref/swift/Property/size_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC9size_viewAA18SizePropertiesViewVvp">size_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for choosing obstacle size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">size_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/SizePropertiesView.html">SizePropertiesView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC10other_viewAA17StartEndPropsViewVvp"></a>
+                    <a name="//apple_ref/swift/Property/other_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC10other_viewAA17StartEndPropsViewVvp">other_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View model containing propertis describing weather object is start or end point.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">other_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/StartEndPropsView.html">StartEndPropsView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC12pyramid_viewAA15PyramidPeakViewVvp"></a>
+                    <a name="//apple_ref/swift/Property/pyramid_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC12pyramid_viewAA15PyramidPeakViewVvp">pyramid_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for choosing peak position for pyramid shaped objects.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">pyramid_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/PyramidPeakView.html">PyramidPeakView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC10saves_viewAA05SavesC4ViewVvp"></a>
+                    <a name="//apple_ref/swift/Property/saves_view" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC10saves_viewAA05SavesC4ViewVvp">saves_view</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for managing saved maps.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">saves_view</span><span class="p">:</span> <span class="kt"><a href="../Structs/SavesMenuView.html">SavesMenuView</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelC9generatorAA17ObstacleGeneratorCvp"></a>
+                    <a name="//apple_ref/swift/Property/generator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelC9generatorAA17ObstacleGeneratorCvp">generator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Instance of generator used to create new obstacles.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">generator</span><span class="p">:</span> <span class="kt"><a href="../Classes/ObstacleGenerator.html">ObstacleGenerator</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator9MenuModelCACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator9MenuModelCACycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes ManuModel.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2021-10-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct AlgorhitmSimulatorApp: App {
+struct AlgorithmSimulatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

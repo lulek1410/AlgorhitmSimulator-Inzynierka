@@ -1,0 +1,82 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/AlgorhitmSimulatorApp.swift",
+      "line": 11,
+      "symbol": "AlgorithmSimulatorApp",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Algorhitms/AlgorithmPicker.swift",
+      "line": 233,
+      "symbol": "Collection.subscript(safe:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Helpers/SwiftPriorityQueue.swift",
+      "line": 34,
+      "symbol": "PriorityQueue.heap",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Helpers/SwiftPriorityQueue.swift",
+      "line": 35,
+      "symbol": "PriorityQueue.ordered",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Helpers/SwiftPriorityQueue.swift",
+      "line": 37,
+      "symbol": "PriorityQueue.init(ascending:startingValues:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Helpers/SwiftPriorityQueue.swift",
+      "line": 128,
+      "symbol": "PriorityQueue.sink(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Helpers/SwiftPriorityQueue.swift",
+      "line": 164,
+      "symbol": "PriorityQueue.swim(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Menu/Properties/Other/PyramidMenu/PyramidPropertiesViewModel.swift",
+      "line": 12,
+      "symbol": "PeakPosition.BottomLeft",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Menu/Properties/Other/PyramidMenu/PyramidPropertiesViewModel.swift",
+      "line": 13,
+      "symbol": "PeakPosition.BottomRight",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Menu/Properties/Other/PyramidMenu/PyramidPropertiesViewModel.swift",
+      "line": 14,
+      "symbol": "PeakPosition.TopLeft",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/janek/Desktop/AlgorhitmSimulator/Shared/Menu/Properties/Other/PyramidMenu/PyramidPropertiesViewModel.swift",
+      "line": 15,
+      "symbol": "PeakPosition.TopRight",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/janek/Desktop/AlgorhitmSimulator"
+}

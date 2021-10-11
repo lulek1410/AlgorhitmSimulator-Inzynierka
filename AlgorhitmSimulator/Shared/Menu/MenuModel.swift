@@ -7,33 +7,56 @@
 
 import Foundation
 
+/// Model holding sub view displayed in MenuView and other instances of classes needed for menu to function properly.
 class MenuModel{
-    let shape_buttons_row_view_model = ShapeButtonsViewModel()
-    let position_properties_view_model = PositionViewModel()
-    let size_view_model = SizeViewModel()
-    //let rotation_view_model = RotationViewModel()
-    //let physics_view_model = PhysicsViewModel()
-    let pyramid_view_model = PyramidPropertiesViewModel()
-    let other_view_model = OtherPropsViewModel()
     
+    /// View model needed for ShapeButtonsView to function.
+    let shape_buttons_row_view_model = ShapeButtonsViewModel()
+    
+    /// View model needed for PositionPropertiesView to function.
+    let position_properties_view_model = PositionViewModel()
+    
+    /// View model needed for SizePropertiesView to function.
+    let size_view_model = SizeViewModel()
+    
+    /// View model needed for PyramidPeakView to function.
+    let pyramid_view_model = PyramidPropertiesViewModel()
+    
+    /// View model needed for OtherPropsView to function.
+    let other_view_model = StartEndPropsViewModel()
+    
+    /// View model needed for SavesMenuView to function.
+    let saves_view_model = SavesMenuViewModel()
+    
+    /// View for choosing obstacle shape.
     var shape_buttons_view : ShapeButtonsRow
+    
+    /// View for choosing obstacle position.
     var position_properties_view : PositionPropertiesView
+    
+    /// View for choosing obstacle size.
     var size_view : SizePropertiesView
-    //var rotation_view : RotationView
-    //var physics_view : PhysicsView
-    var other_view : OtherPropsView
+    
+    /// View model containing propertis describing weather object is start or end point.
+    var other_view : StartEndPropsView
+    
+    /// View for choosing peak position for pyramid shaped objects.
     var pyramid_view : PyramidPeakView
     
+    /// View for managing saved maps.
+    var saves_view : SavesMenuView
+    
+    /// Instance of generator used to create new obstacles.
     var generator = ObstacleGenerator()
     
+    /// Initializes ManuModel.
     init() {
         shape_buttons_view = ShapeButtonsRow(view_model: shape_buttons_row_view_model)
         position_properties_view = PositionPropertiesView(view_model: position_properties_view_model)
         size_view = SizePropertiesView(view_model: size_view_model)
-        //rotation_view = RotationView(view_model: rotation_view_model)
-        //physics_view = PhysicsView(view_model: physics_view_model)
         pyramid_view = PyramidPeakView(view_model: pyramid_view_model)
-        other_view = OtherPropsView(view_model: other_view_model)
+        other_view = StartEndPropsView(view_model: other_view_model)
+        saves_view = SavesMenuView(view_model: saves_view_model)
     }
     
 }

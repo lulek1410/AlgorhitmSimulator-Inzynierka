@@ -7,23 +7,51 @@
 
 import SceneKit
 
+/// Navigation grid of nodes used to move through 3D space by an algorithm.
 class Grid {
+    
+    /// All nodes present in grid.
     var nodes = [[[Node]]]()
+    
+    /// Size of grid in nodes
     var size : [Int] = [0, 0, 0] // width, height, length
+    
+    /// Coordinates of starting node
     var start_point = [-1, -1, -1]
+    
+    /// Coordinates of end node
     var end_point = [-1, -1, -1]
-    let grid_size = 1
     
-    
+    /// Initializes Grid object based on given obstacles.
+    ///
+    /// - Parameters:
+    ///     - obstacles: *All obstacles present in scene to be taken into consideration in grid generation*
     init(obstacles : [SCNNode]) {
         generateGrid(obstacles: obstacles)
         includeObjects(obstacles: obstacles)
     }
     
+    /// Sets all parameters of grid (generates grid)
+    ///
+    /// Grid height is based on highest point in given obstacles:
+    ///   ~~~
+    ///   if (obst.is_start || obst.is_end) {
+    ///       height = Int(obst.position.y)
+    ///   }
+    ///   else if Int(obst.position.y + obst.height) > size[1] && obst.is_obstacle {
+    ///       height = Int(obst.position.y + obst.height)
+    ///   }
+    ///   ~~~
+    ///   Width and length are based on size of floor object
+    ///
+    /// - Parameters:
+    ///     - obstacles: *All obstacles present in scene to be taken into consideration in grid generation*
     func generateGrid(obstacles : [SCNNode]){
         for obst in obstacles{
+            //Get width and length form floor size
             if obst.is_floor {
                 size[0] = Int(obst.width)
+                // We take height because floor is rotated 90 degrees along x axis
                 size[2] = Int(obst.height)
             }
             else if (obst.is_start || obst.is_end) {
@@ -32,25 +60,26 @@ class Grid {
                 }
             }
             else if Int(obst.position.y + obst.height) > size[1] && obst.is_obstacle {
-                print(obst.position, obst.height)
                 size[1] = Int(obst.position.y + obst.height)
             }
         }
-        for x in 0..<(size[0] + 1)/grid_size {
+        for x in 0..<(size[0] + 1) {
             nodes.append([[Node]]())
-            for y in 0..<(size[1] + 1)/grid_size {
+            for y in 0..<(size[1] + 1) {
                 nodes[x].append([Node]())
-                for z in 0..<(size[2] + 1)/grid_size {
+                for z in 0..<(size[2] + 1) {
                     nodes[x][y].append(Node(position: SCNVector3(x, y, z)))
                 }
             }
         }
     }
     
+    /// Includes given obstacles in grid.
+    ///
+    /// - Parameters:
+    ///     - obstacles: *Obstacles to take into consideration in grid*
     private func includeObjects(obstacles : [SCNNode]) {
-        print(obstacles.count)
         for obstacle in obstacles {
-            print(obstacle.position)
             if obstacle.is_start || obstacle.is_end, checkPosition(obstacle: obstacle) {
                 addStartEndPoint(obstacle: obstacle, is_start: obstacle.is_start);
             }
@@ -61,6 +90,15 @@ class Grid {
         }
     }
     
+    /// Checks weather given obstacle is inside grid area.
+    ///
+    /// Grid area is defined as floor object as a base for 3D space and highest point in the scene as its height.
+    ///
+    ///
+    /// - Parameters:
+    ///     - obstacle: *object to check*
+    ///
+    /// - Returns: infromation weather object is inside area
     private func checkPosition(obstacle : SCNNode) -> Bool {
         if Int(obstacle.position.x) >= 0,
            Int(obstacle.position.y) >= 0,
@@ -82,6 +120,10 @@ class Grid {
         return false
     }
     
+    /// Takes given object and makes nodes present inside it not traversable
+    ///
+    /// - Parameters:
+    ///     - obstacle: *object to take into consideration in grid*
     private func addObstacle(obstacle : SCNNode) {
         let name = obstacle.name?.split(separator: " ")
         if name![0] == "Box" {
@@ -126,50 +168,6 @@ class Grid {
                 }
             }
             
-            
-//            if name![1] == "Bottom" {
-//                if name![2] == "left"{
-//                    for y in 1 ..< Int(obstacle.height+2) {
-//                        pos_x_start.append(0)
-//                        pos_x_end.append(Int(obstacle.width / obstacle.height) * (Int(obstacle.height) + 1 - y))
-//
-//                        pos_z_start.append(0)
-//                        pos_z_end.append(Int(obstacle.length / obstacle.height) * (Int(obstacle.height) + 1 - y))
-//                    }
-//                }
-//                else {
-//                    for y in  1 ..< Int(obstacle.height+2) {
-//                        pos_x_start.append(Int((obstacle.width/obstacle.height)) * (y - 1))
-//                        pos_x_end.append(Int(obstacle.width))
-//
-//                        pos_z_start.append(0)
-//                        pos_z_end.append(Int(obstacle.length / obstacle.height) * (Int(obstacle.height) + 1 - y))
-//                    }
-//                }
-//            }
-//            else {
-//                if name![2] == "left" {
-//                    for y in 1 ..< Int(obstacle.height+2) {
-//                        pos_x_start.append(0)
-//                        pos_x_end.append(Int(obstacle.width / obstacle.height) * (Int(obstacle.height) + 1 - y))
-//
-//                        pos_z_start.append(Int((obstacle.length / obstacle.height)) * (y - 1))
-//                        pos_z_end.append(Int(obstacle.length))
-//                    }
-//                }
-//                else {
-//                    for y in 1 ..< Int(obstacle.height+2) {
-//                        pos_x_start.append(Int((obstacle.width/obstacle.height)) * (y - 1))
-//                        pos_x_end.append(Int(obstacle.width))
-//
-//                        pos_z_start.append(Int((obstacle.length / obstacle.height)) * (y - 1))
-//                        pos_z_end.append(Int(obstacle.length))
-//                    }
-//                }
-//            }
-            
-            
-            
             for pos_y in 0 ..< Int(obstacle.height+1) {
                 for pos_x in pos_x_start[pos_y] ..< pos_x_end[pos_y] + 1 {
                     for pos_z in pos_z_start[pos_y] ..< pos_z_end[pos_y] + 1 {
@@ -186,6 +184,11 @@ class Grid {
         }
     }
     
+    /// Sets start and end nodes.
+    ///
+    /// - Parameters:
+    ///     - obstacle: *object that is either start or end obstacle*
+    ///     - is_start: *weather given objest is starting object*
     private func addStartEndPoint(obstacle : SCNNode, is_start : Bool){
         let position = [Int(obstacle.position.x), Int(obstacle.position.y), Int(-obstacle.position.z)]
         switch(is_start){
