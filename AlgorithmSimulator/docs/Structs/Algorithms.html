@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Algorithms Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Algorithms" class="dashAnchor"></a>
+    <a title="Algorithms Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (96% documented)</p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        Algorithms Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AlgorithmPicker.html">AlgorithmPicker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AlgorithmsViewModel.html">AlgorithmsViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Content.html">Content</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentViewModel.html">ContentViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Coordinator.html">Coordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Grid.html">Grid</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MenuModel.html">MenuModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MenuViewModel.html">MenuViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObstacleGenerator.html">ObstacleGenerator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PathDrawer.html">PathDrawer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PositionViewModel.html">PositionViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pyramid.html">Pyramid</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PyramidPropertiesViewModel.html">PyramidPropertiesViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SavesManager.html">SavesManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SavesMenuViewModel.html">SavesMenuViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ShapeButtonsViewModel.html">ShapeButtonsViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SizeViewModel.html">SizeViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StartEndPropsViewModel.html">StartEndPropsViewModel</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/PeakPosition.html">PeakPosition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SCNGeometry.html">SCNGeometry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/SCNNode.html">SCNNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/DrawPathDelegate.html">DrawPathDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EditorSceneDelegate.html">EditorSceneDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MenuDelegate.html">MenuDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObstacleGeneratorDelegate.html">ObstacleGeneratorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObstaclesForAlgorithmDelegate.html">ObstaclesForAlgorithmDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SaveMenuDelegate.html">SaveMenuDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ShowHelpDelegate.html">ShowHelpDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdatePeakPositionDelegate.html">UpdatePeakPositionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdatePositionDelegate.html">UpdatePositionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UpdateSizeDelegate.html">UpdateSizeDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AlgorithmSimulatorApp.html">AlgorithmSimulatorApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Algorithms.html">Algorithms</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AlgorithmsMenuView.html">AlgorithmsMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentModel.html">ContentModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Formatter.html">Formatter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HelpMenuView.html">HelpMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LabeledDivider.html">LabeledDivider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/MenuView.html">MenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Position.html">Position</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PositionPropertiesView.html">PositionPropertiesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PriorityQueue.html">PriorityQueue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PyramidPeak.html">PyramidPeak</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PyramidPeakView.html">PyramidPeakView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SaveFiles.html">SaveFiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SavesMenuView.html">SavesMenuView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SceneKitView.html">SceneKitView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SceneViewRepresentable.html">SceneViewRepresentable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShapeButton.html">ShapeButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShapeButtonsRow.html">ShapeButtonsRow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Size.html">Size</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SizePropertiesView.html">SizePropertiesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StartEndProps.html">StartEndProps</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StartEndPropsView.html">StartEndPropsView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Algorithms</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Algorithms</span></code></pre>
+
+                </div>
+              </div>
+            <p>Algorithms model holding variables responsible for control of algorithmMenuView.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV8dijkstraSbvp"></a>
+                    <a name="//apple_ref/swift/Property/dijkstra" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV8dijkstraSbvp">dijkstra</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Boolean variable informing if dijkstra algorithm is currently picked as algorithm to be used during search.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dijkstra</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV5astarSbvp"></a>
+                    <a name="//apple_ref/swift/Property/astar" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV5astarSbvp">astar</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Boolean variable informing if A star algorithm is currently picked as algorithm to be used during search.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">astar</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV16dijkstra_threadsSbvp"></a>
+                    <a name="//apple_ref/swift/Property/dijkstra_threads" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV16dijkstra_threadsSbvp">dijkstra_threads</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Boolean variable informing if custom implementation of dijkstra algorithm utilizing multiple threads is currently picked as algorithm to be used during. search.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dijkstra_threads</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV4gridAA4GridCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/grid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV4gridAA4GridCSgvp">grid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Grid of nodes on which the algorithm operates.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">grid</span><span class="p">:</span> <span class="kt"><a href="../Classes/Grid.html">Grid</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV20disable_start_buttonSbvp"></a>
+                    <a name="//apple_ref/swift/Property/disable_start_button" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV20disable_start_buttonSbvp">disable_start_button</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Variable used to mnipulte disable option of start button when either algorithm runs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">disable_start_button</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV11informationSSvp"></a>
+                    <a name="//apple_ref/swift/Property/information" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV11informationSSvp">information</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Informations displayed in algorhitms menu informing on currently performed actions or problems.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">information</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV14algorithm_timeSdvp"></a>
+                    <a name="//apple_ref/swift/Property/algorithm_time" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV14algorithm_timeSdvp">algorithm_time</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Time algorhitm needs to find path.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">algorithm_time</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV25algorithm_nodes_processedSivp"></a>
+                    <a name="//apple_ref/swift/Property/algorithm_nodes_processed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV25algorithm_nodes_processedSivp">algorithm_nodes_processed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of nodes processed by algorhitm in order to find path.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">algorithm_nodes_processed</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV23nodes_from_start_to_endSivp"></a>
+                    <a name="//apple_ref/swift/Property/nodes_from_start_to_end" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV23nodes_from_start_to_endSivp">nodes_from_start_to_end</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of nodes from start point to end point.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">nodes_from_start_to_end</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV8distanceSfvp"></a>
+                    <a name="//apple_ref/swift/Property/distance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV8distanceSfvp">distance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Distance betwean start and end point beeing length of the path in 3D space.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">distance</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV9obstaclesSaySo7SCNNodeCGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/obstacles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV9obstaclesSaySo7SCNNodeCGSgvp">obstacles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All obstacles algorithm has to take into consideration during search.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">obstacles</span><span class="p">:</span> <span class="p">[</span><span class="kt">SCNNode</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV22altidute_cost_modifierSfvp"></a>
+                    <a name="//apple_ref/swift/Property/altidute_cost_modifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV22altidute_cost_modifierSfvp">altidute_cost_modifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number determining cost multiplication of distance betwean nodes when their altitude is different.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">altidute_cost_modifier</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18AlgorhitmSimulator10AlgorithmsV9formatterAA9FormatterVvp"></a>
+                    <a name="//apple_ref/swift/Property/formatter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18AlgorhitmSimulator10AlgorithmsV9formatterAA9FormatterVvp">formatter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Instance containing instructions to formatting numerical inputs in text fields.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span><span class="p">:</span> <span class="kt"><a href="../Structs/Formatter.html">Formatter</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2021-10-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>
