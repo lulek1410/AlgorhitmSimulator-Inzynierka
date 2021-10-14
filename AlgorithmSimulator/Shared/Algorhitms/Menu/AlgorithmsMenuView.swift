@@ -25,7 +25,7 @@ struct AlgorithmsMenuView : View {
                             Image(systemName: view_model.model.astar ? "checkmark.square": "square")
                             Text("A* (A-star)")
                         }
-                    }.disabled(view_model.model.dijkstra || view_model.model.dijkstra_threads)
+                    }.disabled(view_model.model.dijkstra || view_model.model.dijkstra_threads || view_model.model.dfs)
                         .padding(.horizontal, 10)
                     Spacer()
                 }.padding(.top, 5)
@@ -36,7 +36,7 @@ struct AlgorithmsMenuView : View {
                             Image(systemName: view_model.model.dijkstra ? "checkmark.square": "square")
                             Text("Dijkstra")
                         }
-                    }.disabled(view_model.model.astar || view_model.model.dijkstra_threads)
+                    }.disabled(view_model.model.astar || view_model.model.dijkstra_threads || view_model.model.dfs)
                         .padding(.horizontal, 10)
                     Spacer()
                 }.padding(.vertical, 5)
@@ -47,7 +47,17 @@ struct AlgorithmsMenuView : View {
                             Image(systemName: view_model.model.dijkstra_threads ? "checkmark.square": "square")
                             Text("Dijkstra multithread")
                         }
-                    }.disabled(view_model.model.astar || view_model.model.dijkstra)
+                    }.disabled(view_model.model.astar || view_model.model.dijkstra || view_model.model.dfs)
+                        .padding(.horizontal, 10)
+                    Spacer()
+                }
+                HStack{
+                    Button(action: { view_model.model.dfs = !view_model.model.dfs }){
+                        HStack{
+                            Image(systemName: view_model.model.dfs ? "checkmark.square": "square")
+                            Text("Depth first search (DFS)")
+                        }
+                    }.disabled(view_model.model.astar || view_model.model.dijkstra || view_model.model.dijkstra_threads)
                         .padding(.horizontal, 10)
                     Spacer()
                 }

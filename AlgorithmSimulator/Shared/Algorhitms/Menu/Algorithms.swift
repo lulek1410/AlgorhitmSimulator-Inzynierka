@@ -19,6 +19,9 @@ struct Algorithms {
     /// Boolean variable informing if custom implementation of dijkstra algorithm utilizing multiple threads is currently picked as algorithm to be used during. search.
     var dijkstra_threads: Bool = false
     
+    /// Boolean variable informing if dfs algorithm is currently picked as algorithm to be used during search.
+    var dfs: Bool = false
+    
     /// Grid of nodes on which the algorithm operates.
     var grid: Grid?
     

@@ -28,19 +28,24 @@ struct SavesMenuView: View {
             }.padding(.horizontal, 5)
             HStack {
                 Button(action: {
-                    if view_model.file_name_to_save != "" {
+                    if view_model.file_name_to_save != "" && !view_model.isGivenNameAlreadyUsed() {
                         view_model.save()
                     }
                     else if !view_model.selected_file.isEmpty {
                         view_model.show_overwrite_alert = true
+                        view_model.overwtire_message = "Are you sure you want to overwrite " + view_model.selected_file.first!.name + " file? Data saved there will be lost."
+                    }
+                    else if view_model.isGivenNameAlreadyUsed() {
+                        view_model.show_overwrite_alert = true
+                        view_model.overwtire_message = "Are you sure you want to overwrite " + view_model.file_name_to_save + " file? Data saved there will be lost."
                     }
                 }){
                     Text("Save")
                 }
                 .alert(isPresented: $view_model.show_overwrite_alert) {
                     Alert(title: Text("Warning"),
-                          message: Text("Are you sure you want to overwrite " + view_model.selected_file.first!.name + " file? Data saved there will be lost."),
-                          primaryButton: .default(Text("Yes"), action: {view_model.overwriteSave()}),
+                          message: Text(view_model.overwtire_message!),
+                          primaryButton: .default(Text("Yes"), action: {view_model.isGivenNameAlreadyUsed() ? view_model.overwriteSaveFromGivenName() : view_model.overwriteSaveFromFileList()}),
                           secondaryButton: .default(Text("No")))
                 }
                 Button(action: {

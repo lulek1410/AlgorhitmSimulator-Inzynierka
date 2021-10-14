@@ -152,7 +152,7 @@ class ObstacleGenerator {
         geometry_node.is_start = is_start
         geometry_node.is_end = is_end
         geometry_node.is_obstacle = is_floor ? false : true
-        
+        geometry_node.is_path = false
         return geometry_node
     }
     

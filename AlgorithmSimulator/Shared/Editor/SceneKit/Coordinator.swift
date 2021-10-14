@@ -5,6 +5,10 @@
 //  Created by Janek on 22/07/2021.
 //
 
+
+// znikają obiekty które dodaje się na wzór już istniejącego
+
+
 import SceneKit
 
 /// Coordinator for coordinating events occurring in map preview.
@@ -241,6 +245,7 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
         else if self.current_node!.is_end{
             self.delegate_for_menu?.endPointNotPresent()
         }
+        //print(current_node!.is_obstacle, current_node!.name, current_node?.position, "delete_selected")
         self.current_node!.removeFromParentNode()
         self.obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: (self.view.scene?.rootNode.childNodes)!)
     }
@@ -279,6 +284,7 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     func clearPreviousPath() {
         for node in self.view.scene!.rootNode.childNodes {
             if node.is_path {
+                //print(node.is_obstacle, node.name, node.position, "clear path")
                 node.removeFromParentNode()
             }
         }
@@ -291,7 +297,6 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     ///     - filename: *Name of file to which we want to save our map*
     func saveMap(filename: String) {
         let text = SavesManager.processMapInfoToSave(nodes: self.view.scene!.rootNode.childNodes)
-        print(text)
         SavesManager.savetoFile(filename: filename, text: text)
     }
     
@@ -305,7 +310,6 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
         removeAllObstacles()
         let text = SavesManager.loadFromFile(filename: filename)
         let obstacles = text.split(separator: "\n")
-        print(obstacles)
         for obstacle in obstacles {
             let parameters = obstacle.split(separator: ";")
             let name = parameters[0].split(separator: " ")
@@ -318,7 +322,6 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
                 }
             }
             let peak_position = name[0] == "Pyramid" ? String(name[1] + " " + name[2]) : "Bottom left"
-            print(Int(String(parameters[4]))!, Int(String(parameters[5]))!, Int(String(parameters[6]))!)
             let position = SCNVector3(Int(String(parameters[4]))!,
                                       Int(String(parameters[5]))!,
                                       Int(String(parameters[6]))!)

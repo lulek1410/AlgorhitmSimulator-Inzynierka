@@ -16,7 +16,6 @@ class PathDrawer{
     ///     - node: *node from which we start drawing path*
     static func drawPath(node : Node){
         if let parent = node.parent_node {
-            print(node.position, "path")
             let pos1 = SCNVector3(x: node.position.x, y: node.position.y, z: -node.position.z)
             let pos2 = SCNVector3(x: parent.position.x, y: parent.position.y, z: -parent.position.z)
             let path_node = SCNGeometry.cylinderLine(from: pos1, to: pos2, segments: 4)

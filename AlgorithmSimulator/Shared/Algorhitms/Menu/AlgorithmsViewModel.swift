@@ -67,9 +67,11 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
         else if model.dijkstra_threads {
             runConcurrentDijkstra()
         }
+        else if model.dfs {
+            runDfs()
+        }
         else {
             model.information = "Algorhytm not selected"
-            print(model.information)
         }
     }
     
@@ -81,6 +83,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             }
             
             let start = DispatchTime.now()
+            
             let processed_nodes = AlgorithmPicker.Astar(grid: self.model.grid!,
                                                         work_item: self.work_item!,
                                                         altitude_cost_modifier : self.model.altidute_cost_modifier)
@@ -90,6 +93,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             
             DispatchQueue.main.sync {
                 self.updateEndSearch(time: time_interval, nodes_num : processed_nodes)
+                self.draw_delegate?.drawPath(grid: self.model.grid!)
             }
         }
         
@@ -115,6 +119,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             
             DispatchQueue.main.sync {
                 self.updateEndSearch(time: time_interval, nodes_num: processed_nodes)
+                self.draw_delegate?.drawPath(grid: self.model.grid!)
             }
         }
         
@@ -139,6 +144,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             
             DispatchQueue.main.sync {
                 self.updateEndSearch(time: time_interval, nodes_num: processed_nodes)
+                self.draw_delegate?.drawPath(grid: self.model.grid!)
             }
         }
         if self.work_item != nil {
@@ -152,6 +158,35 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
         model.information = "Searching"
     }
     
+    func runDfs(){
+        self.work_item = DispatchWorkItem {
+            DispatchQueue.main.sync {
+                self.updateStartSearch()
+            }
+            
+            let start = DispatchTime.now()
+            
+            let processed_nodes = AlgorithmPicker.dfsPathSearch(grid: self.model.grid!,
+                                                                work_item: self.work_item!,
+                                                                altitude_cost_modifier: self.model.altidute_cost_modifier)
+            
+            let end = DispatchTime.now()
+            let nano_time = end.uptimeNanoseconds - start.uptimeNanoseconds
+            let time_interval = Double(nano_time) / 1_000_000_000
+            
+            DispatchQueue.main.sync {
+                self.updateEndSearch(time: time_interval, nodes_num : processed_nodes)
+                if !self.work_item!.isCancelled {
+                    self.draw_delegate?.drawPath(grid: self.model.grid!)
+                }
+            }
+        }
+        
+        if self.work_item != nil {
+            DispatchQueue.global().async(execute: self.work_item!)
+        }
+    }
+    
     /// Updates parameters infroming user on used algorithm performance data and performs actions needed for user to acknowledge that search has ended (eg. diaplsy path or information that it failed to find one).
     ///
     /// - Parameters:
@@ -161,8 +196,6 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
         model.nodes_from_start_to_end = 0
         model.distance = 0
         if self.model.grid?.nodes[(self.model.grid?.end_point[0])!][(self.model.grid?.end_point[1])!][(self.model.grid?.end_point[2])!].parent_node != nil {
-            
-            self.draw_delegate?.drawPath(grid: self.model.grid!)
             self.model.information = ""
             self.model.algorithm_time = time
             self.model.algorithm_nodes_processed = nodes_num

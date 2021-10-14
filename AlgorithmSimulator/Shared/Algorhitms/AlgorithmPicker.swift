@@ -6,7 +6,6 @@
 //
 
 import SceneKit
-import SceneKit
 
 /// Class that allows picking different shortest path algorithms
 class AlgorithmPicker {
@@ -201,6 +200,59 @@ class AlgorithmPicker {
             }
             group.wait()
         }
+        return nodes_processed
+    }
+    
+    /// Implementation of shortest path algorhitm using DFS.
+    ///
+    /// - Parameters:
+    ///     - grid: *grid containing nodes on which the algorithm operates*
+    ///     - work_item: *work item that executes this function (used to break function execution when needed)*
+    ///     - altitude_cost_modifier: *value determining how distance is modified if nodes altitude changes*
+    /// - Returns: Number of nodes that has beed processed in order to find a path betwean start and end nodes.
+    static func dfsPathSearch(grid : Grid,
+                              work_item : DispatchWorkItem,
+                              altitude_cost_modifier : Float) -> Int{
+        
+        let nodes = grid.nodes
+        var nodes_processed : Int = 0
+        nodes[grid.start_point[0]][grid.start_point[1]][grid.start_point[2]].distance = 0
+        
+        var closed : [Node] = []
+        
+        func dfs(node: Node) {
+            if node == nodes[grid.end_point[0]][grid.end_point[1]][grid.end_point[2]] {
+                return
+            }
+            else if(work_item.isCancelled) {
+                return
+            }
+            else{
+                closed.append(node)
+                for x in -1 ..< 2{
+                    for y in -1 ..< 2 {
+                        for z in -1 ..< 2 {
+                            guard let processed_node = nodes[safe:Int(node.position.x)+x]?[safe:Int(node.position.y)+y]?[safe:Int(node.position.z)+z] else {
+                                continue
+                            }
+                            if processed_node.is_traversable {
+                                let dist = node.distance +
+                                AlgorithmPicker.calculateDistance(pos_first: node.position,
+                                                                  pos_second: processed_node.position,
+                                                                  altitude_cost_modifier: altitude_cost_modifier)
+                                if processed_node != node, processed_node.distance > dist {
+                                    nodes_processed += 1
+                                    processed_node.parent_node = node
+                                    processed_node.distance = dist
+                                    dfs(node: processed_node)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        dfs(node: nodes[grid.start_point[0]][grid.start_point[1]][grid.start_point[2]])
         return nodes_processed
     }
     
