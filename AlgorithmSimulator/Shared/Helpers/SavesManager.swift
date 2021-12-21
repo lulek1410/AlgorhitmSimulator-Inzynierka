@@ -38,7 +38,6 @@ class SavesManager {
         let datafromString = text.data(using: String.Encoding.utf8)
         do {
             var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Saves")
-            print(path)
             if !FileManager.default.fileExists(atPath: path.path) {
                 try! FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
             }
@@ -60,11 +59,12 @@ class SavesManager {
     static func processMapInfoToSave(nodes: [SCNNode]) -> String {
         var result : String = ""
         for node in nodes {
-            if !node.is_path && node.name != "Camera"{
+            if node.path == "" && node.name != "Camera" && node.name != "End coord" && node.name != "Start coord"{
                 result += node.name! + ";"
                 result += Int(node.width).description + ";"
                 result += Int(node.height).description + ";"
                 result += Int(node.length).description + ";"
+                result += Int(node.radius).description + ";"
                 result += Int(node.position.x).description + ";"
                 result += Int(node.position.y).description + ";"
                 result += Int(node.position.z).description + ";"

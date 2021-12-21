@@ -10,18 +10,42 @@ import SceneKit
 /// Class used to manage path creation.
 class PathDrawer{
     
+    static let colors: [NSColor] = [NSColor.cyan, NSColor.orange, NSColor.green, NSColor.yellow, NSColor.systemIndigo]
+    
     /// Gives line shape to nodes in path starting from given node and descending throug node's parent using recursion.
     ///
     /// - Parameters:
     ///     - node: *node from which we start drawing path*
-    static func drawPath(node : Node){
-        if let parent = node.parent_node {
-            let pos1 = SCNVector3(x: node.position.x, y: node.position.y, z: -node.position.z)
-            let pos2 = SCNVector3(x: parent.position.x, y: parent.position.y, z: -parent.position.z)
-            let path_node = SCNGeometry.cylinderLine(from: pos1, to: pos2, segments: 4)
-            path_node.is_path = true
-            node.shape = path_node
-            drawPath(node: parent)
+    static func drawPath(node: Node, algorithm_name: String){
+        if node.parent != nil && algorithm_name != "Bidirectional Dijkstra End"{
+            drawPath(node1: node, node2: node.parent!, algorithm_name: algorithm_name)
+            drawPath(node: node.parent!, algorithm_name: algorithm_name)
+        }
+        else if node.r_parent != nil {
+            drawPath(node1: node, node2: node.r_parent!, algorithm_name: algorithm_name)
+            drawPath(node: node.r_parent!, algorithm_name: algorithm_name)
+        }
+    }
+    
+    static func drawPath(node1: Node, node2: Node, algorithm_name: String){
+        let color_num = pickColor(algorithm_name: algorithm_name)
+        let pos1 = SCNVector3(x: node1.position.x, y: node1.position.y, z: -node1.position.z)
+        let pos2 = SCNVector3(x: node2.position.x, y: node2.position.y, z: -node2.position.z)
+        let path_node = SCNGeometry.cylinderLine(from: pos1, to: pos2, segments: 4, color: colors[color_num])
+        path_node.path = algorithm_name
+        node1.shape = path_node
+    }
+    
+    static private func pickColor(algorithm_name: String) -> Int{
+        switch(algorithm_name){
+        case "A* Euclidean": return 0
+        case "Dijkstra": return 1
+        case "Dijkstra Threads": return 2
+        case "Bidirectional Dijkstra Start": return 3
+        case "Bidirectional Dijkstra End": return 3
+        case "A* Diagonal": return 4
+        default:
+            return 0
         }
     }
 }
@@ -31,7 +55,8 @@ extension SCNGeometry {
     /// Representation of cylindricallly shaped line object.
     class func cylinderLine(from: SCNVector3,
                             to: SCNVector3,
-                            segments: Int) -> SCNNode {
+                            segments: Int,
+                            color: NSColor) -> SCNNode {
         
         let x1 = from.x
         let x2 = to.x
@@ -51,7 +76,7 @@ extension SCNGeometry {
         
         cylinder.radialSegmentCount = segments
         
-        cylinder.firstMaterial?.diffuse.contents = NSColor.cyan
+        cylinder.firstMaterial?.diffuse.contents = color
         
         let lineNode = SCNNode(geometry: cylinder)
         

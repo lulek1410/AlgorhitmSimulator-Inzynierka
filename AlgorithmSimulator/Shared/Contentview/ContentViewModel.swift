@@ -34,6 +34,10 @@ class ContentViewModel: ShowHelpDelegate, ObservableObject{
         
         content_model.menu_view.view_model.model.saves_view_model.delegate = content_model.scene_view.scene_view_representable.content.coordinator
         
+        content_model.menu_view.view_model.model.shape_buttons_row_view_model.delegate = content_model.menu_view.view_model
+        
+        content_model.menu_view.view_model.model.start_end_view_model.delegate = content_model.menu_view.view_model
+        
         content_model.menu_view.view_model.show_help_delegate = self
     }
     

@@ -13,7 +13,7 @@ import SceneKit
 
 /// Coordinator for coordinating events occurring in map preview.
 class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDelegate, DrawPathDelegate, UpdatePeakPositionDelegate, SaveMenuDelegate {
-    
+
     /// Variable holding view in which events occur.
     private let view: SCNView
     
@@ -29,11 +29,14 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     /// Variable holding currently selected node
     var current_node: SCNNode?
     
+    var coordinates_text = MapCoordinates()
+    
     ///  delegate used to delegate information to app's menu
     weak var delegate_for_menu: EditorSceneDelegate?
     
     /// Delegate used to delegate information to app's algorhitms menu.
     weak var obstacles_for_algorhitm_delegate: ObstaclesForAlgorithmDelegate?
+
     
     /// Initializes Coordinator with given view to coordinate
     ///
@@ -93,11 +96,8 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
             current_node = result.node
             
             result.node.runAction(loop)
-            //current_node?.eulerAngles = (current_node?.presentation.eulerAngles)!
-
         }
         else{
-            // no object selected
             current_node = nil
             current_geometry = nil
         }
@@ -148,6 +148,11 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
             if result![0] == "Pyramid" {
                 peak_pos = String(result?[1] ?? "") + " " + String(result?[2] ?? "")
             }
+            else if temp!.is_floor {
+                self.coordinates_text.updateEndPositionText(width: new_width)
+                deleteEndCoordinatesText()
+                self.view.scene?.rootNode.addChildNode(coordinates_text.end_coordinate_text.coordinates_text!)
+            }
             current_node?.removeFromParentNode()
             current_node = generator?.createShape(shape: String(result![0]),
                                                    width: new_width,
@@ -176,6 +181,11 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
             if result![0] == "Pyramid" {
                 peak_pos = String(result?[1] ?? "") + " " + String(result?[2] ?? "")
             }
+            else if temp!.is_floor {
+                self.coordinates_text.updateEndPositionText(height: new_height)
+                deleteEndCoordinatesText()
+                self.view.scene?.rootNode.addChildNode(coordinates_text.end_coordinate_text.coordinates_text!)
+            }
             
             current_node = generator?.createShape(shape: String(result![0]),
                                                    width: temp!.width,
@@ -194,7 +204,7 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     /// - Parameters:
     ///     - new_length: *New value of object's length*
     func updateLength(new_length: CGFloat) {
-        if self.current_node?.length != nil,
+        if self.current_node?.height != nil,
            new_length != self.current_node!.length {
             self.current_node?.position = (self.current_node?.position)!
             let temp = current_node
@@ -215,6 +225,25 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
             self.view.scene?.rootNode.addChildNode(current_node!)
         }
     }
+    
+    func updateRadius(new_radius: CGFloat) {
+        if self.current_node?.height != nil,
+           new_radius != self.current_node?.radius{
+            self.current_node?.position = (self.current_node?.position)!
+            let temp = current_node
+            let result = temp?.name?.split(separator: " ")
+            current_node?.removeFromParentNode()
+            current_node = generator?.createShape(shape: String(result![0]),
+                                                  width: temp!.width,
+                                                  height: temp!.height,
+                                                  length: temp!.length,
+                                                  radius: new_radius,
+                                                  position: temp!.position,
+                                                  is_floor: temp!.is_floor)
+            self.view.scene?.rootNode.addChildNode(current_node!)
+        }
+    }
+    
     
     /// Updates selected object's peak position if object has a peak.
     ///
@@ -245,9 +274,15 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
         else if self.current_node!.is_end{
             self.delegate_for_menu?.endPointNotPresent()
         }
-        //print(current_node!.is_obstacle, current_node!.name, current_node?.position, "delete_selected")
         self.current_node!.removeFromParentNode()
-        self.obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: (self.view.scene?.rootNode.childNodes)!)
+    }
+    
+    func deleteEndCoordinatesText(){
+        for node in self.view.scene!.rootNode.childNodes {
+            if node.name == "End coord" {
+                node.removeFromParentNode()
+            }
+        }
     }
     
     /// Adds created object to scene and informs algorhitms menu of change.
@@ -255,18 +290,20 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     /// - Parameters:
     ///     - object: *Object to add to scene*
     func obstacleCreated(object: SCNNode) {
+        if object.is_floor {
+            self.view.scene?.rootNode.addChildNode(coordinates_text.start_coordinate_text.coordinates_text!)
+            self.view.scene?.rootNode.addChildNode(coordinates_text.end_coordinate_text.coordinates_text!)
+        }
         self.view.scene?.rootNode.addChildNode(object)
-        self.obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: (self.view.scene?.rootNode.childNodes)!)
     }
     
     /// Creates path discovered by algorhitm and displays it.
     ///
     /// - Parameters:
     ///     - grid: *Whole grid of nodes on which the algorhitm operates*
-    func drawPath(grid: Grid) {
-        PathDrawer.drawPath(node: grid.nodes[grid.end_point[0]][grid.end_point[1]][grid.end_point[2]])
-        displayPath(node: grid.nodes[grid.end_point[0]][grid.end_point[1]][grid.end_point[2]])
-        self.obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: (self.view.scene?.rootNode.childNodes)!)
+    func drawPath(node: Node, algorithm_name: String) {
+        PathDrawer.drawPath(node: node, algorithm_name: algorithm_name)
+        displayPath(node: node)
     }
     
     /// Displays path from start point to end point found by an algorhitm.
@@ -276,19 +313,30 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
     func displayPath(node: Node) {
         if let shape = node.shape {
             self.view.scene?.rootNode.addChildNode(shape)
-            displayPath(node: node.parent_node!)
+            if node.parent != nil {
+                displayPath(node: node.parent!)
+            }
+            else if node.r_parent != nil {
+                displayPath(node: node.r_parent!)
+            }
         }
     }
     
     /// Deletes path from start to end point that is curently displayed in the preview.
-    func clearPreviousPath() {
+    func clearPath(name: String) {
         for node in self.view.scene!.rootNode.childNodes {
-            if node.is_path {
-                //print(node.is_obstacle, node.name, node.position, "clear path")
-                node.removeFromParentNode()
+            if node.name != "End coord" && node.name != "Start coord"{
+                if name == "All" && node.path != ""{
+                    node.removeFromParentNode()
+                }
+                else if name == "Bidirectional Dijkstra" && (node.path == "Bidirectional Dijkstra Start" || node.path == "Bidirectional Dijkstra End"){
+                    node.removeFromParentNode()
+                }
+                else if node.path == name {
+                    node.removeFromParentNode()
+                }
             }
         }
-        self.obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: (self.view.scene?.rootNode.childNodes)!)
     }
     
     /// Saves whole map created by user to given file
@@ -313,8 +361,8 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
         for obstacle in obstacles {
             let parameters = obstacle.split(separator: ";")
             let name = parameters[0].split(separator: " ")
-            if String(name[0]) == "Sphere" {
-                if String(parameters[8]).boolValue {
+            if String(name[0]) == "StartEnd" {
+                if String(parameters[9]).boolValue {
                     delegate_for_menu?.startPointPresent()
                 }
                 else {
@@ -322,17 +370,25 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
                 }
             }
             let peak_position = name[0] == "Pyramid" ? String(name[1] + " " + name[2]) : "Bottom left"
-            let position = SCNVector3(Int(String(parameters[4]))!,
-                                      Int(String(parameters[5]))!,
-                                      Int(String(parameters[6]))!)
+            let position = SCNVector3(Int(String(parameters[5]))!,
+                                      Int(String(parameters[6]))!,
+                                      Int(String(parameters[7]))!)
             let node = (generator?.createShape(shape: String(name[0]),
                                                width: NumberFormatter().number(from: String(parameters[1])) as! CGFloat,
                                                height: NumberFormatter().number(from: String(parameters[2])) as! CGFloat,
                                                length: NumberFormatter().number(from: String(parameters[3])) as! CGFloat,
+                                               radius: NumberFormatter().number(from: String(parameters[4])) as! CGFloat,
                                                position: position,
                                                peak_position: peak_position,
-                                               is_floor: String(parameters[7]).boolValue,
-                                               is_start: String(parameters[8]).boolValue))
+                                               is_floor: String(parameters[8]).boolValue,
+                                               is_start: String(parameters[9]).boolValue))
+            if node!.is_floor {
+                self.coordinates_text.updateEndPositionText(width: node!.width, height: node!.height)
+                self.view.scene?.rootNode.addChildNode(coordinates_text.start_coordinate_text.coordinates_text!)
+                self.view.scene?.rootNode.addChildNode(coordinates_text.end_coordinate_text.coordinates_text!)
+                
+            }
+            
             self.view.scene?.rootNode.addChildNode(node!)
         }
     }
@@ -345,6 +401,16 @@ class Coordinator: NSObject, UpdatePositionDelegate, UpdateSizeDelegate, MenuDel
             }
         }
     }
+    
+    func askForObstacles() {
+        var nodes : [SCNNode] = []
+        for node in self.view.scene!.rootNode.childNodes {
+            if node.path == "" && node.name != "Camera" && node.path == "" {
+                nodes.append(node)
+            }
+        }
+        obstacles_for_algorhitm_delegate?.setAlgorithmObstacles(obstacles: nodes)
+    }
 }
 
 extension SCNNode {
@@ -356,6 +422,8 @@ extension SCNNode {
     
     /// Calculated value of nodes length based on bounding box z positions.
     var length: CGFloat { CGFloat(self.boundingBox.max.z - self.boundingBox.min.z) }
+    
+    var radius: CGFloat { CGFloat(self.boundingBox.max.z)}
     
     /// Holder of information about weather the node is floor for the whole map or not.
     private static var floor_holder = [String:Bool]()
@@ -370,7 +438,7 @@ extension SCNNode {
     private static var is_end_holder = [String:Bool]()
     
     /// Holder of information about weather the node is part of a path from start to end point
-    private static var is_path_holder = [String:Bool]()
+    private static var path_holder = [String:String]()
     
     /// Variable containing information about node beeing a floor node.
     var is_floor : Bool {
@@ -421,14 +489,14 @@ extension SCNNode {
     }
     
     /// Variable containing information about node beeing a path node
-    var is_path : Bool {
+    var path : String {
         get {
             let address = String(format : "%p", unsafeBitCast(self, to: Int.self))
-            return SCNNode.is_path_holder[address] ?? false
+            return SCNNode.path_holder[address] ?? ""
         }
         set(val) {
             let address = String(format : "%p", unsafeBitCast(self, to: Int.self))
-            SCNNode.is_path_holder[address] = val
+            SCNNode.path_holder[address] = val
         }
     }
 }

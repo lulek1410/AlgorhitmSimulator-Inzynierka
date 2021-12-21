@@ -31,6 +31,7 @@ class ObstacleGenerator {
                      width : CGFloat = 0,
                      height : CGFloat = 0,
                      length : CGFloat = 0,
+                     radius : CGFloat = 0,
                      position : SCNVector3 = SCNVector3(0, 0, 0),
                      peak_position : String = "Bottom left",
                      is_floor : Bool = false,
@@ -49,7 +50,8 @@ class ObstacleGenerator {
                                               length: result.2,
                                               peak_position: peak_position,
                                               position: position)
-        case "Sphere" : return createStartEnd(is_start: is_start, position: position)
+        case "StartEnd" : return createStartEnd(is_start: is_start, position: position)
+        case "Sphere" : return createSphere(position: position, radius: radius)
         default:
             return SCNNode()
         }
@@ -123,14 +125,25 @@ class ObstacleGenerator {
         
         let color = is_start ? NSColor.green : NSColor.red
         let geometry : SCNGeometry
-        geometry = SCNSphere(radius: 0.5)
+        geometry = SCNSphere(radius: 0.3)
         
         geometry.materials.first?.diffuse.contents = color
         let geometry_node = makeNode(geometry: geometry, is_start: is_start, is_end: !is_start)
-        geometry_node.name = "Sphere"
+        geometry_node.name = "StartEnd"
         setNodesProperties(geometry_node: geometry_node, position: position)
         return geometry_node
         
+    }
+    
+    func createSphere(position: SCNVector3 = SCNVector3(0, 0, 0), radius: CGFloat) -> SCNNode{
+        let color : NSColor = NSColor.gray
+        let result = checkRadius(radius: radius)
+        let geometry = SCNSphere(radius: result)
+        let geometry_node = makeNode(geometry: geometry)
+        geometry.materials.first?.diffuse.contents = color
+        geometry_node.name = "Sphere"
+        geometry_node.position = position
+        return geometry_node
     }
             
     ///  Creates SCNNode from given SCNGeometry.
@@ -152,7 +165,7 @@ class ObstacleGenerator {
         geometry_node.is_start = is_start
         geometry_node.is_end = is_end
         geometry_node.is_obstacle = is_floor ? false : true
-        geometry_node.is_path = false
+        geometry_node.path = ""
         return geometry_node
     }
     
@@ -200,6 +213,14 @@ class ObstacleGenerator {
             l = 0.1
         }
         return (w, h, l)
+    }
+    
+    private func checkRadius(radius: CGFloat) -> CGFloat{
+        var r = radius
+        if r == 0 {
+            r = 0.1
+        }
+        return r
     }
 }
 

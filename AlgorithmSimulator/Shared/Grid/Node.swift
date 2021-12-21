@@ -8,32 +8,36 @@
 import SceneKit
 
 /// Representation of single node in navigation grid used for finding path with an algorithm.
-class Node : Equatable, Comparable {
+class Node: Equatable, Comparable {
     
     /// Previous node in shortest path form stast node to current node.
-    var parent_node : Node?
+    var parent: Node?
+    
+    var r_parent: Node?
     
     /// Visual representation.
-    var shape : SCNNode?
+    var shape: SCNNode?
     
     /// Dusitance from start node to current node.
     /// In A star algorithm it is sum of distance form starting nod to current node plus heuristic distance from current node to end node
-    var distance : Float = Float.greatestFiniteMagnitude
+    var distance: Float = Float.greatestFiniteMagnitude
+    
+    var r_dist: Float = Float.greatestFiniteMagnitude
     
     /// Dusitance from start node to current node (Used only in "A start" algorithm).
-    var source_dist : Float = Float.greatestFiniteMagnitude
+    var source_dist: Float = Float.greatestFiniteMagnitude
     
     /// Variable decideing weather we can take node into consideration during path search.
-    var is_traversable : Bool = true
+    var is_traversable: Bool = true
     
     /// Is current node a starting node.
-    var is_starting : Bool = false
+    var is_starting: Bool = false
     
     /// Is current node an end node.
-    var is_end : Bool = false
+    var is_end: Bool = false
     
     /// Nodes position in 3D space
-    var position : SCNVector3 = SCNVector3(0, 0, 0)
+    var position: SCNVector3 = SCNVector3(0, 0, 0)
     
     /// Initializes node with given position.
     ///
@@ -65,6 +69,9 @@ class Node : Equatable, Comparable {
     ///
     /// - Returns: *Boolean value telling us weather node on the left side of operator has shorter path from source than the node on the right side*
     static func < (lhs: Node, rhs: Node) -> Bool {
+        if lhs.r_dist != Float.greatestFiniteMagnitude && rhs.r_dist != Float.greatestFiniteMagnitude {
+            return lhs.r_dist < rhs.r_dist
+        }
         return lhs.distance < rhs.distance
     }
 }

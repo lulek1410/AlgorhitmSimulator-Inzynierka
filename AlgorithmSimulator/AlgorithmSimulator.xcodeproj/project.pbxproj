@@ -16,13 +16,21 @@
 		9F60784E26D9500C00CC9468 /* AlgorithmsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60784726D94F4500CC9468 /* AlgorithmsViewModel.swift */; };
 		9F60784F26D9500F00CC9468 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60784826D94F4500CC9468 /* Algorithms.swift */; };
 		9F60785226DBA5A100CC9468 /* ObstaclesForAlgorithmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60785026DBA5A100CC9468 /* ObstaclesForAlgorithmDelegate.swift */; };
-		9F60785926DF9CAC00CC9468 /* AlgorithmPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60785726DF9CAC00CC9468 /* AlgorithmPicker.swift */; };
 		9F60785C26E64E0500CC9468 /* DrawPathDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60785A26E64E0500CC9468 /* DrawPathDelegate.swift */; };
 		9F60785F26E651D100CC9468 /* PathDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F60785D26E651D100CC9468 /* PathDrawer.swift */; };
+		9F62B65B2744610C00048C70 /* MapCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62B65A2744610C00048C70 /* MapCoordinates.swift */; };
+		9F62B65F2745B97100048C70 /* CoordinateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62B65E2745B97100048C70 /* CoordinateText.swift */; };
+		9F68710F2729D66700E19181 /* ShapeButtonsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68710E2729D66700E19181 /* ShapeButtonsDelegate.swift */; };
+		9F6871112729E15A00E19181 /* StartEndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6871102729E15A00E19181 /* StartEndDelegate.swift */; };
 		9F7BD00126FB383700D2948F /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BCFFF26FB383700D2948F /* Pyramid.swift */; };
 		9F7BD00F26FB766300D2948F /* PyramidPeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BD00D26FB766300D2948F /* PyramidPeak.swift */; };
 		9F7BD01226FB76BF00D2948F /* PyramidPropertiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BD01026FB76BF00D2948F /* PyramidPropertiesViewModel.swift */; };
 		9F7BD01526FB775C00D2948F /* PyramidPeakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7BD01326FB775C00D2948F /* PyramidPeakView.swift */; };
+		9F7EE280274EA92200ECB2C6 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EE27F274EA92200ECB2C6 /* AStar.swift */; };
+		9F7EE282274EAA1900ECB2C6 /* Dijkstra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EE281274EAA1900ECB2C6 /* Dijkstra.swift */; };
+		9F7EE284274EAB0900ECB2C6 /* ConcurrentDijsktra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EE283274EAB0900ECB2C6 /* ConcurrentDijsktra.swift */; };
+		9F7EE286274EAB9800ECB2C6 /* BidirectionalDijkstra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EE285274EAB9800ECB2C6 /* BidirectionalDijkstra.swift */; };
+		9F7EE288274EAC6500ECB2C6 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EE287274EAC6500ECB2C6 /* Helpers.swift */; };
 		9F8894B026A350D2003E859D /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8894AE26A350D2003E859D /* Content.swift */; };
 		9F8894B826A353EC003E859D /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8894B626A353EC003E859D /* ContentModel.swift */; };
 		9F8894BB26A354A3003E859D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8894B926A354A3003E859D /* ContentViewModel.swift */; };
@@ -97,13 +105,21 @@
 		9F60784826D94F4500CC9468 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
 		9F60784926D94F4500CC9468 /* AlgorithmsMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmsMenuView.swift; sourceTree = "<group>"; };
 		9F60785026DBA5A100CC9468 /* ObstaclesForAlgorithmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstaclesForAlgorithmDelegate.swift; sourceTree = "<group>"; };
-		9F60785726DF9CAC00CC9468 /* AlgorithmPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmPicker.swift; sourceTree = "<group>"; };
 		9F60785A26E64E0500CC9468 /* DrawPathDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawPathDelegate.swift; sourceTree = "<group>"; };
 		9F60785D26E651D100CC9468 /* PathDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDrawer.swift; sourceTree = "<group>"; };
+		9F62B65A2744610C00048C70 /* MapCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinates.swift; sourceTree = "<group>"; };
+		9F62B65E2745B97100048C70 /* CoordinateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateText.swift; sourceTree = "<group>"; };
+		9F68710E2729D66700E19181 /* ShapeButtonsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeButtonsDelegate.swift; sourceTree = "<group>"; };
+		9F6871102729E15A00E19181 /* StartEndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndDelegate.swift; sourceTree = "<group>"; };
 		9F7BCFFF26FB383700D2948F /* Pyramid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
 		9F7BD00D26FB766300D2948F /* PyramidPeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPeak.swift; sourceTree = "<group>"; };
 		9F7BD01026FB76BF00D2948F /* PyramidPropertiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPropertiesViewModel.swift; sourceTree = "<group>"; };
 		9F7BD01326FB775C00D2948F /* PyramidPeakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPeakView.swift; sourceTree = "<group>"; };
+		9F7EE27F274EA92200ECB2C6 /* AStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		9F7EE281274EAA1900ECB2C6 /* Dijkstra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dijkstra.swift; sourceTree = "<group>"; };
+		9F7EE283274EAB0900ECB2C6 /* ConcurrentDijsktra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentDijsktra.swift; sourceTree = "<group>"; };
+		9F7EE285274EAB9800ECB2C6 /* BidirectionalDijkstra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalDijkstra.swift; sourceTree = "<group>"; };
+		9F7EE287274EAC6500ECB2C6 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9F8894AE26A350D2003E859D /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		9F8894B626A353EC003E859D /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		9F8894B926A354A3003E859D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -164,16 +180,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F60783F26D92F2800CC9468 /* Algorhitms */ = {
-			isa = PBXGroup;
-			children = (
-				9F60784026D92F4500CC9468 /* Menu */,
-				9F60785726DF9CAC00CC9468 /* AlgorithmPicker.swift */,
-			);
-			path = Algorhitms;
-			sourceTree = "<group>";
-		};
-		9F60784026D92F4500CC9468 /* Menu */ = {
+		9F60783F26D92F2800CC9468 /* AlgorhitmsMenu */ = {
 			isa = PBXGroup;
 			children = (
 				9F60784826D94F4500CC9468 /* Algorithms.swift */,
@@ -182,7 +189,7 @@
 				9F60785026DBA5A100CC9468 /* ObstaclesForAlgorithmDelegate.swift */,
 				9F60785A26E64E0500CC9468 /* DrawPathDelegate.swift */,
 			);
-			path = Menu;
+			path = AlgorhitmsMenu;
 			sourceTree = "<group>";
 		};
 		9F60785326DF915200CC9468 /* Helpers */ = {
@@ -194,6 +201,15 @@
 				9FE098F226FF880100B3EDBD /* SavesManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9F62B659274460F300048C70 /* MapCoordinatesView */ = {
+			isa = PBXGroup;
+			children = (
+				9F62B65A2744610C00048C70 /* MapCoordinates.swift */,
+				9F62B65E2745B97100048C70 /* CoordinateText.swift */,
+			);
+			path = MapCoordinatesView;
 			sourceTree = "<group>";
 		};
 		9F7BCFFE26FB36FB00D2948F /* Shapes */ = {
@@ -221,13 +237,27 @@
 				9F94EF4326CBF10A009D2E0C /* StartEndProps.swift */,
 				9F94EF4626CBF12A009D2E0C /* StartEndPropsViewModel.swift */,
 				9F94EF4926CBF136009D2E0C /* StartEndPropsView.swift */,
+				9F6871102729E15A00E19181 /* StartEndDelegate.swift */,
 			);
 			path = StartEnd;
+			sourceTree = "<group>";
+		};
+		9F7EE27E274EA8EB00ECB2C6 /* Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				9F7EE27F274EA92200ECB2C6 /* AStar.swift */,
+				9F7EE281274EAA1900ECB2C6 /* Dijkstra.swift */,
+				9F7EE283274EAB0900ECB2C6 /* ConcurrentDijsktra.swift */,
+				9F7EE285274EAB9800ECB2C6 /* BidirectionalDijkstra.swift */,
+				9F7EE287274EAC6500ECB2C6 /* Helpers.swift */,
+			);
+			path = Algorithms;
 			sourceTree = "<group>";
 		};
 		9F8894AB26A33AD7003E859D /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				9F62B659274460F300048C70 /* MapCoordinatesView */,
 				9F8894AD26A350A6003E859D /* SceneKit */,
 			);
 			path = Editor;
@@ -303,17 +333,18 @@
 		9FE0D57026309F81007BFAB0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9F7EE27E274EA8EB00ECB2C6 /* Algorithms */,
 				9FD989802714A4D000A0A08C /* HelpMenu */,
 				9F60785326DF915200CC9468 /* Helpers */,
 				9F8894AC26A33AF9003E859D /* Generator */,
 				9F94EF3326CBEB30009D2E0C /* Grid */,
-				9FE0D6492630EDBD007BFAB0 /* Menu */,
+				9FE0D6492630EDBD007BFAB0 /* ObjectsMenu */,
 				9FE098F92703175E00B3EDBD /* SavesMenu */,
-				9F60783F26D92F2800CC9468 /* Algorhitms */,
+				9F60783F26D92F2800CC9468 /* AlgorhitmsMenu */,
 				9F8894AB26A33AD7003E859D /* Editor */,
 				9FE0D5F92630D6B7007BFAB0 /* Contentview */,
-				9FE0D6102630DB11007BFAB0 /* LabeledDivider.swift */,
 				9FE0D57126309F81007BFAB0 /* AlgorithmSimulatorApp.swift */,
+				9FE0D6102630DB11007BFAB0 /* LabeledDivider.swift */,
 				9FE0D57326309F84007BFAB0 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -334,6 +365,7 @@
 				9FE0D5B226309FC7007BFAB0 /* ShapeButton.swift */,
 				9FE0D5BB2630A0FC007BFAB0 /* ShapeButtonsViewModel.swift */,
 				9FE0D5C62630C375007BFAB0 /* ShapeButtonsRow.swift */,
+				9F68710E2729D66700E19181 /* ShapeButtonsDelegate.swift */,
 			);
 			path = ShapeButtons;
 			sourceTree = "<group>";
@@ -348,7 +380,7 @@
 			path = Contentview;
 			sourceTree = "<group>";
 		};
-		9FE0D6492630EDBD007BFAB0 /* Menu */ = {
+		9FE0D6492630EDBD007BFAB0 /* ObjectsMenu */ = {
 			isa = PBXGroup;
 			children = (
 				9FE0D5F82630D69E007BFAB0 /* ShapeButtons */,
@@ -359,7 +391,7 @@
 				9F94EF3026C5B294009D2E0C /* MenuDelegate.swift */,
 				9FD9897E27149B6200A0A08C /* ShowHelpDelegate.swift */,
 			);
-			path = Menu;
+			path = ObjectsMenu;
 			sourceTree = "<group>";
 		};
 		9FE0D64A2630EE18007BFAB0 /* Properties */ = {
@@ -494,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F68710F2729D66700E19181 /* ShapeButtonsDelegate.swift in Sources */,
 				9FE0D6742630F8AE007BFAB0 /* Position.swift in Sources */,
 				9F94EF4526CBF10A009D2E0C /* StartEndProps.swift in Sources */,
 				9FE098F426FF896A00B3EDBD /* SavesManager.swift in Sources */,
@@ -504,7 +537,10 @@
 				9FE0D5BD2630A0FC007BFAB0 /* ShapeButtonsViewModel.swift in Sources */,
 				9F94EF3226C5B294009D2E0C /* MenuDelegate.swift in Sources */,
 				9F4A73CE26AC20AB00421873 /* EditorSceneDelegate.swift in Sources */,
+				9F62B65F2745B97100048C70 /* CoordinateText.swift in Sources */,
 				9F7BD00F26FB766300D2948F /* PyramidPeak.swift in Sources */,
+				9F7EE282274EAA1900ECB2C6 /* Dijkstra.swift in Sources */,
+				9F7EE284274EAB0900ECB2C6 /* ConcurrentDijsktra.swift in Sources */,
 				9FE0D5E72630CFE2007BFAB0 /* MenuViewModel.swift in Sources */,
 				9F60784F26D9500F00CC9468 /* Algorithms.swift in Sources */,
 				9F60784D26D9500200CC9468 /* AlgorithmsMenuView.swift in Sources */,
@@ -519,7 +555,10 @@
 				9FE0D5D82630CD6E007BFAB0 /* MenuModel.swift in Sources */,
 				9F1EBE3026FC832200AD4F63 /* UpdatePeakPositionDelegate.swift in Sources */,
 				9F94EF3B26CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift in Sources */,
+				9F7EE280274EA92200ECB2C6 /* AStar.swift in Sources */,
+				9F7EE286274EAB9800ECB2C6 /* BidirectionalDijkstra.swift in Sources */,
 				9FD9897D27137B9200A0A08C /* SwiftPriorityQueue.swift in Sources */,
+				9F6871112729E15A00E19181 /* StartEndDelegate.swift in Sources */,
 				9FE0990C2703726C00B3EDBD /* SaveMenuDelegate.swift in Sources */,
 				9F94EF4B26CBF136009D2E0C /* StartEndPropsView.swift in Sources */,
 				9FE0D63C2630ED45007BFAB0 /* MenuView.swift in Sources */,
@@ -539,10 +578,11 @@
 				9F4A73CB26A9F4E500421873 /* Coordinator.swift in Sources */,
 				9F7BD01526FB775C00D2948F /* PyramidPeakView.swift in Sources */,
 				9FE099032703340600B3EDBD /* SavesMenuViewModel.swift in Sources */,
+				9F62B65B2744610C00048C70 /* MapCoordinates.swift in Sources */,
 				9FE0D5B426309FC7007BFAB0 /* ShapeButton.swift in Sources */,
 				9FE0D59B26309F85007BFAB0 /* AlgorithmSimulatorApp.swift in Sources */,
-				9F60785926DF9CAC00CC9468 /* AlgorithmPicker.swift in Sources */,
 				9F94EF5126CE9092009D2E0C /* Grid.swift in Sources */,
+				9F7EE288274EAC6500ECB2C6 /* Helpers.swift in Sources */,
 				9FE0D6692630F114007BFAB0 /* Formatter.swift in Sources */,
 				9F60784E26D9500C00CC9468 /* AlgorithmsViewModel.swift in Sources */,
 				9FE0D64D2630EE2A007BFAB0 /* Size.swift in Sources */,
@@ -677,6 +717,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = AlgorhitmSimulator;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -699,7 +740,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = AlgorithmSimulator.app;
 				PRODUCT_NAME = AlgorhitmSimulator;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -715,6 +756,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -722,7 +764,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = AlgorithmSimulator.app;
 				PRODUCT_NAME = AlgorhitmSimulator;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;

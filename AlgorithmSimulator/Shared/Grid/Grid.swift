@@ -26,8 +26,8 @@ class Grid {
     ///
     /// - Parameters:
     ///     - obstacles: *All obstacles present in scene to be taken into consideration in grid generation*
-    init(obstacles : [SCNNode]) {
-        generateGrid(obstacles: obstacles)
+    init(obstacles : [SCNNode], height: Int = -1) {
+        generateGrid(obstacles: obstacles, height: height)
         includeObjects(obstacles: obstacles)
     }
     
@@ -46,7 +46,7 @@ class Grid {
     ///
     /// - Parameters:
     ///     - obstacles: *All obstacles present in scene to be taken into consideration in grid generation*
-    func generateGrid(obstacles : [SCNNode]){
+    func generateGrid(obstacles : [SCNNode], height: Int){
         for obst in obstacles{
             //Get width and length form floor size
             if obst.is_floor {
@@ -54,13 +54,21 @@ class Grid {
                 // We take height because floor is rotated 90 degrees along x axis
                 size[2] = Int(obst.height)
             }
-            else if (obst.is_start || obst.is_end) {
-                if Int(obst.position.y) > size[1]{
-                    size[1] = Int(obst.position.y)
+            if height == -1 {
+                if (obst.is_start || obst.is_end) {
+                    if Int(obst.position.y) > size[1]{
+                        size[1] = Int(obst.position.y)
+                    }
+                }
+                else if Int(obst.position.y + obst.height) > size[1] && obst.is_obstacle {
+                    size[1] = Int(obst.position.y + obst.height)
+                }
+                else if Int(obst.position.y + obst.radius) > size[1] && obst.is_obstacle {
+                    size[1] = Int(obst.position.y + obst.height)
                 }
             }
-            else if Int(obst.position.y + obst.height) > size[1] && obst.is_obstacle {
-                size[1] = Int(obst.position.y + obst.height)
+            else {
+                size[1] = height
             }
         }
         for x in 0..<(size[0] + 1) {
@@ -74,6 +82,20 @@ class Grid {
         }
     }
     
+    func getStartingPoint() -> Node?{
+        guard let start_node = nodes[safe: start_point[0]]?[safe: start_point[1]]?[safe: start_point[2]] else {
+            return nil
+        }
+        return start_node
+    }
+    
+    func getEndingPoint() -> Node?{
+        guard let end_node = nodes[safe: end_point[0]]?[safe: end_point[1]]?[safe: end_point[2]] else {
+            return nil
+        }
+        return end_node
+    }
+    
     /// Includes given obstacles in grid.
     ///
     /// - Parameters:
@@ -84,7 +106,7 @@ class Grid {
                 addStartEndPoint(obstacle: obstacle, is_start: obstacle.is_start);
             }
             
-            else if !obstacle.is_floor{
+            else if !obstacle.is_floor && obstacle.is_obstacle{
                 addObstacle(obstacle : obstacle)
             }
         }
@@ -127,53 +149,82 @@ class Grid {
     private func addObstacle(obstacle : SCNNode) {
         let name = obstacle.name?.split(separator: " ")
         if name![0] == "Box" {
-            for pos_x in 0 ..< Int(obstacle.width+1) {
-                for pos_y in  0 ..< Int(obstacle.height+1) {
-                    for pos_z in 0 ..< Int(obstacle.length+1) {
-                        let x = Int(obstacle.position.x) + pos_x
-                        let y = Int(obstacle.position.y) + pos_y
-                        let z = Int(-obstacle.position.z) + pos_z
-                        guard let node = nodes[safe: x]?[safe :y]?[safe :z] else {
-                            continue
-                        }
-                        node.is_traversable = false
+            addBox(box: obstacle)
+        }
+        else if name![0] == "Pyramid" {
+            addPyramid(pyramid: obstacle, name: name!)
+        }
+        else if name![0] == "Sphere" {
+            addSphere(sphere: obstacle)
+        }
+    }
+    
+    private func addBox(box: SCNNode){
+        for pos_x in 0 ..< Int(box.width+1) {
+            for pos_y in  0 ..< Int(box.height+1) {
+                for pos_z in 0 ..< Int(box.length+1) {
+                    let x = Int(box.position.x) + pos_x
+                    let y = Int(box.position.y) + pos_y
+                    let z = Int(-box.position.z) + pos_z
+                    guard let node = nodes[safe: x]?[safe :y]?[safe :z] else {
+                        continue
                     }
+                    node.is_traversable = false
                 }
             }
         }
-        else if name![0] == "Pyramid" {
-            var pos_x_start : [Int] = []
-            var pos_x_end : [Int] = []
-            var pos_z_start : [Int] = []
-            var pos_z_end : [Int] = []
-            
-            for y in 1 ..< Int(obstacle.height+2) {
-                let num_descending : Double = (obstacle.width/obstacle.height) * (obstacle.height + 1 - CGFloat(y))
-                let num_ascending : Double = (obstacle.width/obstacle.height) * CGFloat(y - 1)
-                if name![2] == "left" {
-                    pos_x_start.append(0)
-                    pos_x_end.append(Int(ceil(num_descending)))
-                }
-                else {
-                    pos_x_start.append(Int(ceil(num_ascending)))
-                    pos_x_end.append(Int(obstacle.width))
-                }
-                if name![1] == "Bottom" {
-                    pos_z_start.append(0)
-                    pos_z_end.append(Int(ceil(num_descending)))
-                }
-                else {
-                    pos_z_start.append(Int(ceil(num_ascending)))
-                    pos_z_end.append(Int(obstacle.length))
+    }
+    
+    private func addPyramid(pyramid: SCNNode, name: [String.SubSequence]){
+        var pos_x_start : [Int] = []
+        var pos_x_end : [Int] = []
+        var pos_z_start : [Int] = []
+        var pos_z_end : [Int] = []
+        
+        for y in 1 ..< Int(pyramid.height+2) {
+            let num_descending : Double = (pyramid.width/pyramid.height) * (pyramid.height + 1 - CGFloat(y))
+            let num_ascending : Double = (pyramid.width/pyramid.height) * CGFloat(y - 1)
+            if name[2] == "left" {
+                pos_x_start.append(0)
+                pos_x_end.append(Int(ceil(num_descending)))
+            }
+            else {
+                pos_x_start.append(Int(ceil(num_ascending)))
+                pos_x_end.append(Int(pyramid.width))
+            }
+            if name[1] == "Bottom" {
+                pos_z_start.append(0)
+                pos_z_end.append(Int(ceil(num_descending)))
+            }
+            else {
+                pos_z_start.append(Int(ceil(num_ascending)))
+                pos_z_end.append(Int(pyramid.length))
+            }
+        }
+        
+        for pos_y in 0 ..< Int(pyramid.height+1) {
+            for pos_x in pos_x_start[pos_y] ..< pos_x_end[pos_y] + 1 {
+                for pos_z in pos_z_start[pos_y] ..< pos_z_end[pos_y] + 1 {
+                    let x = Int(pyramid.position.x) + pos_x
+                    let y = Int(pyramid.position.y) + pos_y
+                    let z = Int(-pyramid.position.z) + pos_z
+                    guard let node = nodes[safe: x]?[safe: y]?[safe: z] else {
+                        continue
+                    }
+                    node.is_traversable = false
                 }
             }
-            
-            for pos_y in 0 ..< Int(obstacle.height+1) {
-                for pos_x in pos_x_start[pos_y] ..< pos_x_end[pos_y] + 1 {
-                    for pos_z in pos_z_start[pos_y] ..< pos_z_end[pos_y] + 1 {
-                        let x = Int(obstacle.position.x) + pos_x
-                        let y = Int(obstacle.position.y) + pos_y
-                        let z = Int(-obstacle.position.z) + pos_z
+        }
+    }
+    
+    private func addSphere(sphere: SCNNode){
+        for pos_x in -Int(sphere.width)/2 ..< Int(sphere.width/2+1) {
+            for pos_y in  -Int(sphere.height)/2 ..< Int(sphere.height/2+1) {
+                for pos_z in -Int(sphere.length)/2 ..< Int(sphere.length/2+1) {
+                    let x = Int(sphere.position.x) + pos_x
+                    let y = Int(sphere.position.y) + pos_y
+                    let z = Int(-sphere.position.z) + pos_z
+                    if pow(CGFloat(pos_x), 2) + pow(CGFloat(pos_y), 2) + pow(CGFloat(pos_z), 2) <= pow(sphere.radius, 2) {
                         guard let node = nodes[safe: x]?[safe: y]?[safe: z] else {
                             continue
                         }
