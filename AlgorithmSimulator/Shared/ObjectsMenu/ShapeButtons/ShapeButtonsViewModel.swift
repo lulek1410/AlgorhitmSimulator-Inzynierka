@@ -2,23 +2,28 @@
 //  ImageButtonViewModel.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 21/04/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import Foundation
 
-/// View Model class responsible for managing ShapeButtonsRow view.
 class ShapeButtonsViewModel: ObservableObject{
     
-    ///  All buttons representing obstacles shapes.
     @Published private(set) var shape_buttons : [ShapeButton] = []
     
-    /// Currently selected button.
     @Published var selected_button : ShapeButton?
     @Published var disabled : Bool = false
     weak var delegate : ShapeButtonsDelegate?
     
-    /// Sets up all shape buttons available
     func createButtons(){
         if shape_buttons.isEmpty {
             shape_buttons.append(ShapeButton(image: "Box", text: "Box"))

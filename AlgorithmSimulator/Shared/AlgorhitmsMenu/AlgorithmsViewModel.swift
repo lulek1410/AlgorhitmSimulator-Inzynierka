@@ -2,8 +2,17 @@
 //  AlgorithmsViewModel.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 27/08/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 
@@ -13,27 +22,16 @@ enum HeuristicsType : String, CaseIterable, Identifiable {
     var id : String {self.rawValue}
 }
 
-/// View Model class responsible for responding to events that occur in view that it operates on (AlgorithmsMenuView)
 class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
-    
-    /// Model variable holding parameter used to controll algorithm menu.
+
     @Published var model = Algorithms()
-    
-    /// Delegate variable used to delegate drawing path found by algorithm betwean points.
     weak var draw_delegate : DrawPathDelegate?
-    
-    /// Variable that encapsulates work to be executed in dispatch queues.
     var work_item : DispatchWorkItem?
-    
-    /// Sets obstacles present in preview scene to be included during algorithms run.
-    ///
-    /// - Parameters:
-    ///     - obstacles: *obstacle objects currently present in preview scene*
+
     func setAlgorithmObstacles(obstacles: [SCNNode]) {
         model.obstacles = obstacles
     }
-    
-    /// Runs selected algorithm or updates dispalyed information describeing problem which prevents algorithm run.
+
     func start(){
         
         draw_delegate?.askForObstacles()
@@ -58,16 +56,10 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
         }
     }
     
-    /// Checks if start and end points for algorithm were set by user.
-    ///
-    /// - Returns :
-    /// 1. boolean corresponding to start point beeing present in algorithms grid
-    /// 2. boolean corresponding to end point beeing present in algorithms grid
     func checkStartEndSet() -> (Bool, Bool) {
         return (self.model.grid?.start_point != [-1, -1, -1], self.model.grid?.end_point != [-1, -1, -1])
     }
-    
-    ///  Starts running selected algorithm
+
     func startAlgorithm() {
         if model.display_all_visited {
             draw_delegate?.clearPath(name: "All")
@@ -91,8 +83,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             model.information = "Algorhytm not selected"
         }
     }
-    
-    /// Runs A star shortest path algorithm on dispatch queue to prevent aplication from freezing.
+
     func runAstar(){
         self.work_item = DispatchWorkItem {
             DispatchQueue.main.sync {
@@ -128,8 +119,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             DispatchQueue.global().async(execute: self.work_item!)
         }
     }
-    
-    /// Runs Dijkstra shortest path algorithm on dispatch queue to prevent aplication from freezing.
+
     func runDijkstra() {
         self.work_item = DispatchWorkItem {
             DispatchQueue.main.sync {
@@ -162,8 +152,7 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             DispatchQueue.global().async(execute: self.work_item!)
         }
     }
-    
-    /// Runs custom implementetion of Dijkstra shortest path algorithm utilizing multiple threads on dispatch queue to prevent aplication from freezing.
+
     func runConcurrentDijkstra() {
         self.work_item = DispatchWorkItem {
             DispatchQueue.main.sync {
@@ -226,18 +215,12 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
             DispatchQueue.global().async(execute: self.work_item!)
         }
     }
-    
-    /// Updates parameters informing that search of path has begun.
+
     private func updateStartSearch() {
         model.disable_start_button = true
         model.information = "Searching"
     }
-    
-    /// Updates parameters infroming user on used algorithm performance data and performs actions needed for user to acknowledge that search has ended (eg. diaplsy path or information that it failed to find one).
-    ///
-    /// - Parameters:
-    ///     - time: *Time algorithm needed to find path*
-    ///     - nodes_num: *Number of nodes which were processed by algorithm during its run*
+
     private func updateEndSearch(time : Double, nodes_num : Int, bidirectional_path_found: Bool = false) {
         model.nodes_from_start_to_end = 0
         model.distance = 0
@@ -292,19 +275,14 @@ class AlgorithmsViewModel : ObservableObject, ObstaclesForAlgorithmDelegate {
         }
         
     }
-    
-    /// Calculates number of nodes from start to given node using recursion.
-    ///
-    /// - Parameters:
-    ///     - node: *node from which we calculate 'node distance' to start point (in our case it is always end node)*
+
     private func calculateNodesFromStartToEnd(node : Node){
         if let parent = node.parent {
             model.nodes_from_start_to_end += 1
             calculateNodesFromStartToEnd(node: parent)
         }
     }
-    
-    /// Stops algorithm thet is currently running.
+
     func breakAlgothitm() {
         work_item?.cancel()
     }

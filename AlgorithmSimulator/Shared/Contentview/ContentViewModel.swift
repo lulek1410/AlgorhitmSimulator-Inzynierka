@@ -2,18 +2,24 @@
 //  ContentViewController.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 17/07/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import Foundation
 
-/// Coordinator which handles events present in ContentView.
 class ContentViewModel: ShowHelpDelegate, ObservableObject{
 
-    /// Model variable holding data used in ContentView.
     @Published var content_model = ContentModel()
-    
-    /// Initializes model's variable's internal bindings.
+
     init(){
         
         content_model.scene_view.scene_view_representable.content.coordinator!.delegate_for_menu = content_model.menu_view.view_model
@@ -40,13 +46,11 @@ class ContentViewModel: ShowHelpDelegate, ObservableObject{
         
         content_model.menu_view.view_model.show_help_delegate = self
     }
-    
-    /// Closes help view and goes back to editor view.
+
     func closeHelp(){
         content_model.display_help = false
     }
-    
-    /// Opens help view.
+
     func showHelp() {
         content_model.display_help = true
     }

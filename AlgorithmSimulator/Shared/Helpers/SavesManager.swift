@@ -2,20 +2,22 @@
 //  DataLoader.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 25/09/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 
-/// Class used to manage save files containing saved maps.
 class SavesManager {
     
-    /// Loads text saved in file with given name.
-    ///
-    /// - Parameters:
-    ///     - fillename: *Name of file from which we want to load*
-    ///
-    /// - Returns: *Text read from file*
     static func loadFromFile(filename: String, directory: String = "Saves/") -> String {
         var text : String = ""
         do {
@@ -29,11 +31,6 @@ class SavesManager {
         return text
     }
     
-    /// Saves given text to file with given name and creates file if it wasn't already created.
-    ///
-    /// - Parameters:
-    ///     - filename: *Name of file to which we want to save or which we want to create*
-    ///     - text: *Text we want to place in file*
     static func savetoFile(filename: String, text: String) {
         let datafromString = text.data(using: String.Encoding.utf8)
         do {
@@ -50,12 +47,6 @@ class SavesManager {
         }
     }
     
-    /// Processes given nodes in order to get key informations needed for map to be correctly saved and then recreated.
-    ///
-    /// - Parameters:
-    ///     - nodes: *list of nodes which hold geometrical objects*
-    ///
-    /// - Returns: *Text  with all key information used to save maps*
     static func processMapInfoToSave(nodes: [SCNNode]) -> String {
         var result : String = ""
         for node in nodes {
@@ -75,9 +66,6 @@ class SavesManager {
         return result
     }
     
-    /// Reads directory with saves in order to check present save iles in it.
-    ///
-    /// - Returns: *names of files placed in array*
     static func getPresentSaveFiles() -> [String] {
         var txt_file_names : [String] = []
         do {
@@ -96,11 +84,7 @@ class SavesManager {
         }
         return txt_file_names
     }
-    
-    /// Deletes file with given name.
-    ///
-    /// - Parameters:
-    ///     - filename: *Name of file whech we want to delete*
+
     static func deleteFile(filename: String) {
         
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Saves/" + filename + ".txt")

@@ -2,18 +2,23 @@
 //  SavesMenuView.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 28/09/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SwiftUI
 
-/// SwiftUI view in which we can manage saved maps.
 struct SavesMenuView: View {
     
-    /// View model variable used to controll view and call actions when events occur in it.
     @ObservedObject var view_model : SavesMenuViewModel
-    
-    /// Main body of SavesMenuView.
     var body: some View {
         VStack {
             List(view_model.save_files, id: \.self, selection: $view_model.selected_file) { file in

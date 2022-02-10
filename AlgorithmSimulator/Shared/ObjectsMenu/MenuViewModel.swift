@@ -2,44 +2,31 @@
 //  ContentViewHandler.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 21/04/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
-
-
-/// Trzeba dodać w gridzie żeby zaznaczał punkty wewnątrz kuli jako nietraversable i przetestować czy działa, potestować jeszce tą kule ogólnie pod względem podstawowych funkcji.
-/// Napisać algorytm meet in middle z dijkstrą albo czymkolwiek tak właściwie
-/// Napisać jakąs opcję do dadawanie "przezroczystych przeszkód" które moga mieć odległości definiowane przy pomocy jakiejś funkcji predefiniowanej ewentualnie wpisywanej przez użytkownika ale sprawdzanej pod względem ujemności jej elementów.
-
-
-
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 
-/// View Model class responsible for responding to events that occur in view that it operates on (MenuView).
 class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegate, ObservableObject{
     
-    /// Model variable holding obstacle generator and subviews displayed in MenuView .
     var model  = MenuModel()
     
-    /// Variable decideing weather add obstacle button is active.
     @Published var disable_add_button: Bool = false
-    
-    /// Variable decideing weather delete obstacle button is active.
     @Published var disable_delete_button: Bool = true
-    
-    /// Variable decideing weather MenuView displays menu form managing obstacles or menu for managing save files.
     @Published var dispaly_saves: Bool = false
-    
-    /// Controls weather the floor obstacle has already been creates.
     var floor_created: Bool = false
-    
-    /// Delegate variable used to delegate creation and deletion of obstacles.
     weak var menu_delegate: MenuDelegate?
-    
-    /// Delegate variable used to delegate information that help view should be displayed
     weak var show_help_delegate: ShowHelpDelegate?
     
-    /// Creates new obstacle using inputs provided by user to menu subviews.
     func createObstacle(){
         let position = model.position_properties_view_model.position.position
         var shape = model.shape_buttons_row_view_model.selected_button!.text
@@ -68,7 +55,6 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         }
     }
     
-    /// Creates floor obstacle if there isn't one already.
     func onAppear() {
         if !floor_created {
             menu_delegate?.obstacleCreated(object: model.generator.createShape(shape: "Box",
@@ -79,10 +65,6 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         }
     }
     
-    /// Updates data displyed in sub views to match parameters of gicen object.
-    ///
-    /// - Parameters:
-    ///     - object: *Currently selected obstacle*
     func objectTapped(object: SCNNode) {
         self.model.shape_buttons_row_view_model.checkSelectedShape()
         
@@ -116,10 +98,6 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         }
     }
     
-    /// Updates data describing peak position of given pyramid shape.
-    ///
-    /// - Parameters:
-    ///     - object: *Object which peak data to display in menu (if it is not a pyramid the function does nothing)*
     private func updatePeak(object: SCNNode) {
         if let name = object.name?.split(separator: " ") {
             disablePeakPositionPicker(shape_name: String(name[0]))
@@ -130,10 +108,6 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         }
     }
     
-    /// Disables buttons depending on given objects parameters.
-    ///
-    /// - Parameters:
-    ///     - object: *Object which data changes buttons accesibility*
     private func disableButtons(object: SCNNode) {
         disable_delete_button = true
         disable_add_button = false
@@ -157,10 +131,6 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         
     }
     
-    /// Disables peak position picker menu depending on currently selected shape
-    ///
-    /// - Parameters:
-    ///     - shape_name: *Name of selected shape*
     func disablePeakPositionPicker(shape_name: String) {
         if shape_name == "Pyramid" {
             model.pyramid_view_model.changeAccesibility(disabled: false)
@@ -184,29 +154,24 @@ class MenuViewModel : EditorSceneDelegate, ShapeButtonsDelegate, StartEndDelegat
         }
     }
     
-    /// Updates model parameter making it possible to add new starting point.
     func startPointNotPresent() {
         model.start_end_view_model.model.start_point_added = false
     }
     
-    /// Updates model parameter making it possible to add new end point.
     func endPointNotPresent() {
         model.start_end_view_model.model.end_point_added = false
     }
     
-    /// Updates model parameter making it impossible to add new starting point.
     func startPointPresent() {
         model.start_end_view_model.model.start_point_added = true
         model.start_end_view_model.model.is_start = false
     }
     
-    /// Updates model parameter making it impossible to add new end point.
     func endPointPresent() {
         model.start_end_view_model.model.end_point_added = true
         model.start_end_view_model.model.is_end = false
     }
     
-    /// Changes currently displayed view.
     func changeView() {
         if self.dispaly_saves == false {
             model.saves_view_model.setupPresentFiles()

@@ -2,18 +2,24 @@
 //  AlgorithmsMenu.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 27/08/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SwiftUI
 
-/// SwiftUI view in which we can pick and run shortest path algorithms and get some statistics of used algorithms
 struct AlgorithmsMenuView : View {
-    
-    /// Instance of view model used to perform actions when events in view occur
+
     @ObservedObject var view_model : AlgorithmsViewModel = AlgorithmsViewModel()
     
-    /// Body of view
     var body: some View {
         VStack {
             Group {

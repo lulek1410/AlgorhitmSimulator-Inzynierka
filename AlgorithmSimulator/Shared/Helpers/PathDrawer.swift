@@ -2,20 +2,24 @@
 //  PathDrawer.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 06/09/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 
-/// Class used to manage path creation.
 class PathDrawer{
     
     static let colors: [NSColor] = [NSColor.cyan, NSColor.orange, NSColor.green, NSColor.yellow, NSColor.systemIndigo]
     
-    /// Gives line shape to nodes in path starting from given node and descending throug node's parent using recursion.
-    ///
-    /// - Parameters:
-    ///     - node: *node from which we start drawing path*
     static func drawPath(node: Node, algorithm_name: String){
         if node.parent != nil && algorithm_name != "Bidirectional Dijkstra End"{
             drawPath(node1: node, node2: node.parent!, algorithm_name: algorithm_name)
@@ -51,8 +55,6 @@ class PathDrawer{
 }
 
 extension SCNGeometry {
-    
-    /// Representation of cylindricallly shaped line object.
     class func cylinderLine(from: SCNVector3,
                             to: SCNVector3,
                             segments: Int,
@@ -91,4 +93,5 @@ extension SCNGeometry {
         return lineNode
     }
 }
+
 

@@ -7,10 +7,8 @@
 
 import Foundation
 
-/// View Model class responsible for managing StartEndPropsView.
 class StartEndPropsViewModel : ObservableObject{
     
-    /// Model variable holding inputs provided by user.
     @Published var model : StartEndProps = StartEndProps()
     weak var delegate : StartEndDelegate?
     

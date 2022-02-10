@@ -2,21 +2,21 @@
 //  Dijkstra.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 24/11/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 import Foundation
 
-/// Implementation of Dijkstra shortest path algorithm.
-///
-/// - Parameters:
-///     - grid: *grid containing nodes on which the algorithm operates*
-///     - work_item: *work item that executes this function (used to break function execution when needed)*
-///     - altitude_cost_modifier: *value determining how distance is modified if nodes altitude changes*
-///     - dynamic_path_display: *value determining weather to display path dynamicaly when algoithm is working*
-///     - path_drawer: *delegate object used to dipslay path on the sceene*
-/// - Returns: Number of nodes that has beed processed in order to find a path betwean start and end nodes.
 func Dijkstra(grid: Grid,
               work_item: DispatchWorkItem,
               altitude_change_cost_modifier: Float,
@@ -55,7 +55,7 @@ func Dijkstra(grid: Grid,
                     guard let processed_node = nodes[safe:Int(min!.position.x)+x]?[safe:Int(min!.position.y)+y]?[safe:Int(min!.position.z)+z] else {
                         continue
                     }
-                    // Check if node is right for processing
+                    // Sprawdzenie czy węzeł jest poprawny i odpowiedzni do dalszego przetwarzania
                     if !closed.contains(processed_node) && processed_node.is_traversable{
 
                         let new_dist = min!.distance +
@@ -63,8 +63,7 @@ func Dijkstra(grid: Grid,
                                           pos_second: processed_node.position,
                                           altitude_change_cost_modifier: altitude_change_cost_modifier,
                                           altitude_movement_cost_modifier: altitude_movement_cost_modifier)
-                        // if new distance is besster than previous we set new values for curently
-                        // processed node
+                        // Jeżeli nowy dystans jest krótszy od obecnego to zmieniamy go na nowy
                         if new_dist < processed_node.distance {
                             nodes_processed += 1
                             processed_node.distance = new_dist

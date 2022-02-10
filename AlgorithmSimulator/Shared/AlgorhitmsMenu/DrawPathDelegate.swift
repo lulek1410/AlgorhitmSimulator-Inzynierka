@@ -2,23 +2,23 @@
 //  DrawPathDelegate.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 06/09/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import SceneKit
 
-/// Delegate sending information to preview of map
 protocol DrawPathDelegate: AnyObject {
     
-    /// Creates path discovered by algorithm and displays it.
-    ///
-    /// - Parameters:
-    ///     - grid: *Whole grid of nodes on which the algorithm operates*
     func drawPath(node: Node, algorithm_name: String)
-    
-    /// Requasts currenlty displayed obstacles
     func askForObstacles()
-    
-    /// Deletes path from start to end point that is curently displayed in the preview.
     func clearPath(name: String)
 }

@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-/// SwiftUI view in which user can set/change size properties of objects.
 struct SizePropertiesView: View {
     
-    /// View model variable used to controll view and call actions when events occur in it.
     @ObservedObject var view_model : SizeViewModel
-    
-    /// Main body of SizePropertiesView.
+
     var body: some View {
         VStack{
             LabeledDivider(label: "Size", font_size: 12, horizontal_padding: 5)

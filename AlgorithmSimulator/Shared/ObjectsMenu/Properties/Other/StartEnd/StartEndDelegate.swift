@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// Delegation protocol used to disable views not relative to start/end point placement in scene
 protocol StartEndDelegate : AnyObject {
     func disableStartEndIrrelevantOptions(start_end_selected : Bool)
 }

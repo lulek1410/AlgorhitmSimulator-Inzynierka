@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-/// SwiftUI view in which user can set properties of objects determining weather they are viewed as start or edn point in nodes grid.
 struct StartEndPropsView: View {
     
-    /// View model variable used to controll view and call actions when events occur in it.
     @ObservedObject var view_model = StartEndPropsViewModel()
     
-    /// Main body of StartEndPropsView.
     var body: some View {
         VStack{
             HStack{

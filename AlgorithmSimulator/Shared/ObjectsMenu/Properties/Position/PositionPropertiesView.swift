@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-/// SwiftUI view in which user can set/change position properties of objects.
 struct PositionPropertiesView: View {
     
-    /// View model variable used to controll view and call actions when events occur in it.
     @ObservedObject var view_model : PositionViewModel
     
-    /// Main body of PositionPropertiesView.
     var body: some View {
         VStack{
             LabeledDivider(label: "Position", font_size: 12, horizontal_padding: 5)

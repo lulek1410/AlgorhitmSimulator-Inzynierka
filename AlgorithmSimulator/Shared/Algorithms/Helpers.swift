@@ -2,8 +2,17 @@
 //  Helpers.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 24/11/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import Foundation
 import SceneKit
@@ -28,13 +37,6 @@ func drawPathDynamicaly(algorithm_name: String, path_drawer: DrawPathDelegate, c
     }
 }
 
-/// Calculates distance betwean 2 points in 3D space
-///
-/// - Parameters:
-///     - pos_first: *position of first point*
-///     - pos_second: *position of second point*
-///     - altitude_cost_modifier: *value determining how distance is modified if nodes altitude changes*
-/// - Returns: Distance betwean pos_first and pos_second
 func calculateDistance(pos_first: SCNVector3,
                        pos_second: SCNVector3,
                        altitude_change_cost_modifier: Float,

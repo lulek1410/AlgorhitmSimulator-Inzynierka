@@ -2,35 +2,30 @@
 //  SavesMenuViewModel.swift
 //  AlgorithmSimulator-macOS
 //
-//  Created by Janek on 28/09/2021.
+//  Copyright (c) 2021 Jan Szewczyński
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 
 import Foundation
 
-/// View Model class responsible for responding to events that occur in view that it operates on (SavesMenuView).
 class SavesMenuViewModel: ObservableObject{
     
-    /// All files present in folder containing saved maps.
     @Published private(set) var save_files: [SaveFiles] = []
-    
-    /// Currently sellected file.
     @Published var selected_file = Set<SaveFiles>()
-    
-    /// User input describing file name to which he wants to save current map.
     @Published var file_name_to_save: String = ""
-    
-    /// Variable controlling weather to display allert with information when user tries to delete file.
     @Published var show_delete_alert: Bool = false
-    
-    /// Variable controlling weather to display allert with information when user tries to overwrite file.
     @Published var show_overwrite_alert: Bool = false
-    
     var overwtire_message: String?
-    
-    /// Delegate variable used to delegate save and load actions
     weak var delegate: SaveMenuDelegate?
     
-    ///  Gets save files currently present in saves folder in order to display them to user
     func setupPresentFiles() {
         save_files.removeAll()
         selected_file.removeAll()
@@ -40,14 +35,12 @@ class SavesMenuViewModel: ObservableObject{
         }
     }
     
-    /// Delegates save action and updates currently displayed files to include newly created file.
     func save() {
         delegate?.saveMap(filename: file_name_to_save)
         file_name_to_save = ""
         setupPresentFiles()
     }
     
-    /// Delegates save action when it involves overwriteing currently existing file.
     func overwriteSaveFromFileList() {
         delegate?.saveMap(filename: selected_file.first!.name)
     }
@@ -56,15 +49,12 @@ class SavesMenuViewModel: ObservableObject{
         delegate?.saveMap(filename: file_name_to_save)
     }
     
-    /// Delegates load action in order to get saved map from file and display it.
     func loadSave() {
         if !selected_file.isEmpty {
             delegate?.loadMap(filename: selected_file.first!.name)
         }
     }
     
-    
-    /// Deletes selected file and updates view to exclude deleted file.
     func deleteFile() {
         if !self.selected_file.isEmpty {
             SavesManager.deleteFile(filename: self.selected_file.first!.name)
