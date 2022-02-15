@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  ContentModel.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński

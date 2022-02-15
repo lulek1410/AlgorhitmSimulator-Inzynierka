@@ -37,7 +37,6 @@
 		9F94EF2926C15630009D2E0C /* UpdateSizeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF2726C15630009D2E0C /* UpdateSizeDelegate.swift */; };
 		9F94EF3226C5B294009D2E0C /* MenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF3026C5B294009D2E0C /* MenuDelegate.swift */; };
 		9F94EF3926CBEBE7009D2E0C /* ObstacleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF3626CBEBE7009D2E0C /* ObstacleGenerator.swift */; };
-		9F94EF3B26CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF3726CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift */; };
 		9F94EF3F26CBEC0B009D2E0C /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF3C26CBEC0A009D2E0C /* SceneKitView.swift */; };
 		9F94EF4126CBEC0B009D2E0C /* SceneViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF3D26CBEC0A009D2E0C /* SceneViewRepresentable.swift */; };
 		9F94EF4526CBF10A009D2E0C /* StartEndProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F94EF4326CBF10A009D2E0C /* StartEndProps.swift */; };
@@ -115,7 +114,7 @@
 		9F7BD00D26FB766300D2948F /* PyramidPeak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPeak.swift; sourceTree = "<group>"; };
 		9F7BD01026FB76BF00D2948F /* PyramidPropertiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPropertiesViewModel.swift; sourceTree = "<group>"; };
 		9F7BD01326FB775C00D2948F /* PyramidPeakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidPeakView.swift; sourceTree = "<group>"; };
-		9F7EE27F274EA92200ECB2C6 /* AStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		9F7EE27F274EA92200ECB2C6 /* AStar.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
 		9F7EE281274EAA1900ECB2C6 /* Dijkstra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dijkstra.swift; sourceTree = "<group>"; };
 		9F7EE283274EAB0900ECB2C6 /* ConcurrentDijsktra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentDijsktra.swift; sourceTree = "<group>"; };
 		9F7EE285274EAB9800ECB2C6 /* BidirectionalDijkstra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalDijkstra.swift; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 		9F94EF2726C15630009D2E0C /* UpdateSizeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSizeDelegate.swift; sourceTree = "<group>"; };
 		9F94EF3026C5B294009D2E0C /* MenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDelegate.swift; sourceTree = "<group>"; };
 		9F94EF3626CBEBE7009D2E0C /* ObstacleGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleGenerator.swift; sourceTree = "<group>"; };
-		9F94EF3726CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObstacleGeneratorDelegate.swift; sourceTree = "<group>"; };
 		9F94EF3C26CBEC0A009D2E0C /* SceneKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		9F94EF3D26CBEC0A009D2E0C /* SceneViewRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneViewRepresentable.swift; sourceTree = "<group>"; };
 		9F94EF4326CBF10A009D2E0C /* StartEndProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndProps.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 			children = (
 				9F7BCFFE26FB36FB00D2948F /* Shapes */,
 				9F94EF3626CBEBE7009D2E0C /* ObstacleGenerator.swift */,
-				9F94EF3726CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -554,7 +551,6 @@
 				9FE0D6582630EE9E007BFAB0 /* SizeViewModel.swift in Sources */,
 				9FE0D5D82630CD6E007BFAB0 /* MenuModel.swift in Sources */,
 				9F1EBE3026FC832200AD4F63 /* UpdatePeakPositionDelegate.swift in Sources */,
-				9F94EF3B26CBEBE7009D2E0C /* ObstacleGeneratorDelegate.swift in Sources */,
 				9F7EE280274EA92200ECB2C6 /* AStar.swift in Sources */,
 				9F7EE286274EAB9800ECB2C6 /* BidirectionalDijkstra.swift in Sources */,
 				9FD9897D27137B9200A0A08C /* SwiftPriorityQueue.swift in Sources */,

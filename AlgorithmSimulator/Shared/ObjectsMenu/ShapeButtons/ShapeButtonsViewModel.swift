@@ -1,5 +1,5 @@
 //
-//  ImageButtonViewModel.swift
+//  ShapeButtonViewModel.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński

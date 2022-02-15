@@ -1,5 +1,5 @@
 //
-//  AlgorithmsMenu.swift
+//  AlgorithmsMenuView.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński
@@ -56,7 +56,6 @@ struct AlgorithmsMenuView : View {
                         .padding(.horizontal, 10)
                     Spacer()
                 }.padding(.top, 3)
-                
                 HStack {
                     Button(action: { view_model.model.dijkstra_threads = !view_model.model.dijkstra_threads }){
                         HStack{
@@ -78,7 +77,6 @@ struct AlgorithmsMenuView : View {
                     Spacer()
                 }.padding(.top, 3)
             }
-            
             Group {
                 LabeledDivider(label: "Options", font_size: 12, horizontal_padding: 5).padding(.top, 5)
                 HStack {
@@ -143,7 +141,6 @@ struct AlgorithmsMenuView : View {
                     Spacer()
                 }
             }
-            
             Group {
                 LabeledDivider(label: "Statistics", font_size: 12, horizontal_padding: 5).padding(.top, 5)
                 HStack {
@@ -172,7 +169,6 @@ struct AlgorithmsMenuView : View {
                 }
                 Spacer()
             }
-            
             Group{
                 Text(view_model.model.information)
                     .padding(.horizontal, 15)

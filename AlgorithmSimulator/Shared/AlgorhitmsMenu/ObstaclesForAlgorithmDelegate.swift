@@ -1,5 +1,5 @@
 //
-//  ObstaclesDelegate.swift
+//  ObstaclesForAlgorithmDelegate.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński

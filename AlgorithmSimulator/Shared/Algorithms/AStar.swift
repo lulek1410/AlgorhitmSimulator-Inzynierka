@@ -63,7 +63,7 @@ func Astar(grid: Grid,
         for x in -1 ..< 2{
             for y in -1 ..< 2 {
                 for z in -1 ..< 2 {
-                    guard let processed_node = nodes[safe:Int(min!.position.x)+x]?[safe:Int(min!.position.y)+y]?[safe:Int(min!.position.z)+z] else {
+                    guard let processed_node = nodes[safe:Int(min!.position.x)+x]?[safe:Int(min!.position.y)+y]?[safe:Int(min!.position.z)+z]else {
                         continue
                     }
                     // Sprawdzenie czy węzeł jest poprawny i odpowiedzni do dalszego przetwarzania

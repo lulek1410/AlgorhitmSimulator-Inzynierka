@@ -1,5 +1,5 @@
 //
-//  ContentViewController.swift
+//  ContentViewModel.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński
@@ -54,6 +54,4 @@ class ContentViewModel: ShowHelpDelegate, ObservableObject{
     func showHelp() {
         content_model.display_help = true
     }
-    
-    
 }

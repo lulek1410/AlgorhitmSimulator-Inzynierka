@@ -16,7 +16,6 @@
 
 import SceneKit
 
-/// Holder of elements needed to display.
 class Content {
 
     let scene = SCNScene()
@@ -38,5 +37,4 @@ class Content {
         cameraNode.eulerAngles = SCNVector3(-Double.pi/8, 0, 0)
         scene.rootNode.addChildNode(cameraNode)
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  MapCoordinatesViewModel.swift
+//  MapCoordinates.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński

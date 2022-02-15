@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  MenuModel.swift
 //  AlgorithmSimulator-macOS
 //
 //  Copyright (c) 2021 Jan Szewczyński
@@ -38,5 +38,4 @@ class MenuModel{
         start_end_view = StartEndPropsView(view_model: start_end_view_model)
         saves_view = SavesMenuView(view_model: saves_view_model)
     }
-    
 }
